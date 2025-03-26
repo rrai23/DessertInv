@@ -1,0 +1,24 @@
+{
+  "name": "dessertinv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrai23/DessertInv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrai23/DessertInv/issues"
+  },
+  "homepage": "https://github.com/rrai23/DessertInv#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.16",
+    "tailwindcss": "^4.0.16"
+  }
+}
