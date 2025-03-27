@@ -26,7 +26,7 @@
     <!--to be styled-->
     <div id="add-item-form-div" class="max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-12 p-6">
         <h1 class="text-xl font-semibold text-center">Add Item</h1>
-        <form action="add-item-process.php" method="get">
+        <form action="add-item.php" method="get">
             <label for="item-name" class="font-medium">Item Name: </label><br>
             <input type="text" name="item-name" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <label for="item-category" class="font-medium">Category: </label><br>
