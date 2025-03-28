@@ -12,18 +12,16 @@
             <h1 class="text-3xl font-bold text-blue-500">Dessert Inventory</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
-            <button id="button-view-inv" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition active">View inventory</button>
-            <button id="button-add-item" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add Item</button>
+            <a><button id="button-view-inv" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition active">View inventory</button></a>
+            <a><button id="button-add-item" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add Item</button></a>
         </div>
     </nav>
 
-    <!--to be styled: you can style the table in read-database.php-->
-    <div id="inventory-table-div" class="">
-        <h1>Inventory table</h1>
+    <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-white mx-6 mt-6 p-2">
         <?php include 'read-database.php'; ?>
     </div>
 
-    <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-12 p-6">
+    <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-6 p-6">
         <h1 class="text-xl font-semibold text-center">Add Item</h1>
         <form id="add-item-form" action="add-item.php" method="post">
             <label for="item-name" class="font-medium">Item Name: </label><br>
@@ -55,7 +53,7 @@
             <label for="item-quantity" class="font-medium">Quantity: </label>
             <input type="number" name="item-quantity" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <div class="flex justify-center">
-                <input type="submit" value="Add Item" class="w-full font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                <input type="submit" value="Add Item" class="w-full cursor-pointer font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             </div>
         </form>
     </div>

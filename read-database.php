@@ -6,52 +6,69 @@ $table = "crem_de_la_crem";
 $sql = "SELECT * FROM $table";
 $result = $conn->query($sql);
 if ($result->num_rows > 0){
-    echo "<table border='1' style='border-collapse: collapse; width: 100%; text-align: left;'>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Image Path</th>
-        <th>Last Restocked</th>
-        <th>In Stock</th>
-        <th>Sell Price</th>
-        <th>Cost Price</th>
-        <th>Quantity</th>
-        <th></th>
-        <th></th>
-    </tr>";
+    $tableName = strtoupper(str_replace("_", " ", $table));
+    echo "<h1 class='text-xl font-semibold text-center'>$tableName</h1>
+    <div class='border border-blue-500 rounded-lg overflow-hidden mt-1'>
+    <table class='border-collapse w-full text-left'>
+        <thead class='bg-blue-500 text-white'>
+            <tr>
+                <th class='font-semibold py-1.5 px-1 pl-3 w-10'>ID</th>
+                <th class='font-semibold py-1.5 px-1 w-50'>Name</th>
+                <th class='font-semibold py-1.5 px-1 w-40'>Category</th>
+                <th class='font-semibold py-1.5 px-1'>Description</th>"
+                 . //<th class='font-semibold py-1.5 px-1'>Image Path</th>
+                "<th class='font-semibold py-1.5 px-1 text-center w-30'>Last Restocked</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-17'>In Stock</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-13'>Sale</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-13'>Cost</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-13'>Stock</th>
+                <th class='font-semibold py-1.5 px-1 w-8'></th>
+                <th class='font-semibold py-1.5 px-1 w-7'></th>
+            </tr>
+        </thead>";
 
+    $rowCnt = 0;
     while ($row = $result->fetch_assoc()){
-        $shortDesc = strlen($row["description"]) > 40 ? substr($row["description"], 0, 40) : $row["description"];
+        //isavailable
+        $row["is_available"] = $row["quantity"] > 0 ? 1 : 0;
+
+        //fixing category
+        $category = str_replace("_", " ", $row["category"]);
+
+        //long and short description
+        $shortDesc = strlen($row["description"]) > 70 ? substr($row["description"], 0, 70) : $row["description"];
         $row["description"] = !empty($row["description"]) ? $row["description"] : "No description available.";
-        echo "<tr>
-            <td>" . $row["id"] . "</td>
-            <td>" . $row["name"] . "</td>
-            <td>" . $row["category"] . "</td>
-            <td>
+        
+        //alternating gray background
+        echo ($rowCnt%2==0) ? "<tr class='bg-gray-100'>" : "<tr class='bg-white'>" ;
+        $rowCnt++;
+
+        echo "<td class='text-center'>" . $row["id"] . "</td>
+            <td class='pl-1'>" . $row["name"] . "</td>
+            <td>" . $category . "</td>
+            <td class='text-justify py-1.5 pr-4'>
                 <div class='description-container'>
                     <span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
-                        <a href='#' class='expand-link'>...</a>
+                        <a href='#' class='expand-link text-blue-500'>[...]</a>
                     </span>
                     <span class='full-description hidden'>
                         " . htmlspecialchars($row["description"]) . " 
-                        <a href='#' class='collapse-link'>[Hide]</a>
+                        <a href='#' class='collapse-link text-blue-500'>[Hide]</a>
                     </span>
                 </div>
-            </td>
-            <td>" . $row["image_path"] . "</td>
-            <td>" . $row["last_restocked"] . "</td>
-            <td>" . $row["is_available"] . "</td>
-            <td>" . $row["sell_price"] . "</td>
-            <td>" . $row["cost_price"] . "</td>
-            <td>" . $row["quantity"] . "</td>
-            <td><a href='edit-item.php'><img src='src/edit.png' alt='edit' width='20px'></a></td>
-            <td><a href='delete-item.php'><img src='src/delete.png' alt='delete' width='20px'></a></td>
+            </td>"
+             . //<td>" . $row["image_path"] . "</td>
+            "<td class='text-center'>" . $row["last_restocked"] . "</td>
+            <td class='text-center'>" . ($row["is_available"] ? "TRUE" : "FALSE") . "</td>
+            <td class='text-right pr-2'>" . $row["sell_price"] . "</td>
+            <td class='text-right pr-2'>" . $row["cost_price"] . "</td>
+            <td class='text-right pr-2'>" . $row["quantity"] . "</td>
+            <td class='p-1'><a href='edit-item.php'><img src='src/edit.png' alt='edit' width='18px'></a></td>
+            <td><a href='delete-item.php'><img src='src/delete.png' alt='delete' width='18px'></a></td>
         </tr>";
     }
-    echo "</table>";
+    echo "</table></div>";
 } else {
     echo "0 results found.";
 }

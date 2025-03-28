@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($conn->query($sql) === TRUE) {
             echo "$name added to $table";
             header("Location: index.php?message=$name%20added%20to%20table%20$table"); 
-        } else echo "ERror: $conn->error";
+        } else echo "Error: $conn->error";
     }
 } 
 else echo "Invalid Request Method";
