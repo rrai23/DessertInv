@@ -58,7 +58,7 @@ if ($result->num_rows > 0){
                 } else {
                     echo $row["description"];
                 }
-
+                
         echo    "</div>
             </td>"
              . //<td>" . $row["image_path"] . "</td>

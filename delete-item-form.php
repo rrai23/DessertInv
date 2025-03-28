@@ -1,5 +1,24 @@
 <?php
 require 'db.php';
+
+$id = $_GET['id'];
+$sql = "SELECT * FROM $table WHERE id = $id";
+$result = $conn->query($sql);
+if($result && $result->num_rows > 0) {
+    $item = $result->fetch_assoc();
+
+    $id = $item['id'];
+    $name = $item['name'];
+    $category = $item['category'];
+    $description = $item['description'];
+    $imagePath = $item['image_path'];
+    $lastRestocked = $item['last_restocked'];
+    $isAvailable = ($item['quantity'] > 0) ? 1: 0;
+    $sellPrice = number_format(floatval($item['sell_price']), 2);
+    $costPrice = number_format(floatval($item['cost_price']), 2);
+    $quantity = $item['quantity'];
+}
+
 $conn->close();
 ?>
 
@@ -22,34 +41,38 @@ $conn->close();
         </div>
     </nav>
 
-    <div id="item-info-div" class="max-w-lg rounded-xl bg-white shadow-lg overflow-hidden mx-auto mt-6 p-6 px-7">
+    <div id="item-info-div" class="max-w-lg rounded-xl bg-white shadow-lg overflow-hidden mx-auto mt-6 py-4 px-6">
         <div class="item-info">
             <!--<img alt="selected item image">-->
-            <h1 class="text-xl font-semibold text-center">Item Name</h1>
-            <h2 class="text-sm text-center text-blue-500 mb-3">Item Category</h2>
-            <p class="text-md text-justify mb-4">This item is a versatile and reliable addition to any collection. Designed with practicality in mind, it offers functionality and simplicity that suit a variety of needs. Whether you're looking for something to enhance your daily routine or a thoughtful gift for someone special, this item delivers consistent performance and quality. Its neutral design ensures it seamlessly complements any environment or purpose. A dependable choice for all occasions.</p>
+            <h1 class="text-xl font-semibold text-center"><?php echo $name; ?></h1>
+            <h2 class="text-sm text-center text-blue-500 mb-3"><?php echo str_replace("_", " ", $category); ?></h2>
+            <p class="text-md text-justify mb-4"><?php echo $description; ?></p>
             <div id="middle-info" class="flex flex-row">
-                <div id="last-restocked-info" class="w-1/2">
+                <div id="last-restocked-info" class="w-1/3">
                     <p class="text-md text-blue-500">Last Restock:</p>
-                    <h2 class="text-2xl">2005-05-19</h2>
+                    <h2 class="text-2xl"><?php echo $lastRestocked; ?></h2>
                 </div>
-                <div id="is-available-info" class="w-1/4">
+                <div id="id-info" class="w-1/3">
+                    <p class="text-md text-blue-500">ID Number:</p>
+                    <h2 class="text-2xl">#<?php echo $id; ?></h2>
+                </div>
+                <div id="is-available-info" class="w-1/3">
                     <p class="text-md text-blue-500">Is Available:</p>
-                    <h2 class="text-2xl">Yes</h2>
-                </div>
-                <div id="quantity-info" class="w-1/4 pl-4">
-                    <p class="text-md text-blue-500">Quantity:</p>
-                    <h2 class="text-2xl">500</h2>
+                    <h2 class="text-2xl"><?php echo ($isAvailable === 1 ? "TRUE" : "FALSE"); ?></h2>
                 </div>
             </div>
             <div id="bottom-info" class="flex flex-row items-center justify-evenly">
-                <div id="cost-price-info" class="w-1/2">
+                <div id="cost-price-info" class="w-1/3">
                     <p class="text-md text-blue-500">Cost Price:</p>
-                    <h2 class="text-2xl">₱500.00</h2>
+                    <h2 class="text-2xl">₱<?php echo $costPrice; ?></h2>
                 </div>
-                <div id="sale-price-info" class="w-1/2">
+                <div id="sale-price-info" class="w-1/3">
                     <p class="text-md text-blue-500">Sale Price:</p>
-                    <h2 class="text-2xl">₱500.00</h2>
+                    <h2 class="text-2xl">₱<?php echo $sellPrice; ?></h2>
+                </div>
+                <div id="quantity-info" class="w-1/3">
+                    <p class="text-md text-blue-500">Quantity:</p>
+                    <h2 class="text-2xl"><?php echo $quantity; ?> unit(s)</h2>
                 </div>
             </div> 
         </div>
