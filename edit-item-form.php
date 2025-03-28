@@ -1,5 +1,6 @@
 <?php
-//turn the card into a form where you can change shit
+//fix the cancel button to redirect to index.php not edit-item.php
+//make edit-item-functional
 require 'db.php';
 
 $id = $_GET['id'];
@@ -28,7 +29,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Item | <?php echo $tableName; ?></title>
+    <title>Edit Item | <?php echo $tableName; ?></title>
     <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="bg-gray-100">
@@ -42,46 +43,71 @@ $conn->close();
         </div>
     </nav>
 
-    <div id="item-info-div" class="max-w-lg rounded-xl bg-white shadow-lg overflow-hidden mx-auto mt-6 mb-6">
-        <img src="<?php echo $imagePath ?>" alt="selected item image" class="w-full max-h-50 object-cover">
-        <div class="item-info pb-4 px-6">
-            <h1 class="text-xl font-semibold text-center mt-2"><?php echo $name; ?></h1>
-            <h2 class="text-sm text-center text-blue-500 mb-1"><?php echo str_replace("_", " ", $category); ?></h2>
-            <p class="text-md text-justify mb-4"><?php echo $description; ?></p>
-            <div id="middle-info" class="flex flex-row">
-                <div id="last-restocked-info" class="w-1/3">
-                    <p class="text-md text-blue-500">Last Restock:</p>
-                    <h2 class="text-2xl"><?php echo $lastRestocked; ?></h2>
+    <div id="edit-item-form-div">
+        <div id="item-info" class="bg-white max-w-lg rounded-lg shadow-lg overflow-hidden mx-auto my-6 px-6 pt-2">
+            <h1 class="text-xl font-semibold text-center mt-2">Edit Item</h1>
+            <form id="edit-item-form" action="edit-item.php" method="post">
+                <label for="item-name" class="font-medium">Item Name: </label><br>
+                <input type="text" name="item-name" value="<?php echo $name; ?>" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                <label for="item-category" class="font-medium">Category: </label><br>
+                <select name="item-category" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    <option value="Frozen_Dessert" <?php echo ($category === "Frozen_Dessert") ? "selected" : NULL; ?>>Frozen Dessert</option>
+                    <option value="Cold_Dessert" <?php echo ($category === "Cold_Dessert") ? "selected" : NULL; ?>>Cold Dessert</option>
+                    <option value="Hot_Dessert" <?php echo ($category === "Hot_Dessert") ? "selected" : NULL; ?>>Hot Dessert</option>
+                    <option value="Room_Temperature_Dessert" <?php echo ($category === "Room_Temperature_Dessert") ? "selected" : NULL; ?>>Room Temperature Dessert</option>
+                    <option value="Bite-sized_Dessert" <?php echo ($category === "Bite-sized_Dessert") ? "selected" : NULL; ?>>Bite-sized Dessert</option>
+                </select><br>
+                <label for="item-description" class="font-medium">Description</label><br>
+                <textarea
+                name="item-description"
+                rows="6" cols="50"
+                class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Enter a description of the item..."><?php echo $description; ?>
+                </textarea><br>
+                <div id="item-prices" class="flex space-x-4">
+                    <div>
+                        <label for="item-sell-price" class="font-medium">Selling Price: </label>
+                        <input type="number" name="item-sell-price" value="<?php echo $sellPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    </div>
+                    <div>
+                        <label for="item-cost-price" class="font-medium">Cost Price: </label>
+                        <input type="number" name="item-cost-price" value="<?php echo $costPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    </div>
                 </div>
-                <div id="id-info" class="w-1/3">
-                    <p class="text-md text-blue-500">ID Number:</p>
-                    <h2 class="text-2xl">#<?php echo $id; ?></h2>
+                <div id="item-stocks" class="flex space-x-4">
+                    <div class="w-1/2">
+                        <label for="item-quantity" class="font-medium">Quantity: </label>
+                        <input type="number" name="item-quantity" value="<?php echo $quantity; ?>" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    </div>
+                    <div class="w-1/2">
+                        <p class="font-medium">In Stock: </p>
+                        <div id="in-stock-radio" class="flex items-center justify-evenly my-3">
+                            <div id="in-stock-radio-true-div" class="items-center flex space-x-3">    
+                                <label for="is-available-true" class="text-gray-700 font-medium cursor-pointer">TRUE</label>
+                                <input type="radio" 
+                                    name="item-is-available" 
+                                    id="is-available-true" 
+                                    value="1" <?php echo ($isAvailable === 1) ? "checked" : NULL; ?>
+                                    class="cursor-pointer w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                            </div>
+                            <div id="in-stock-radio-false-div" class="items-center flex space-x-3">
+                                <label for="is-available-false" class="text-gray-700 font-medium cursor-pointer">FALSE</label>
+                                <input type="radio" 
+                                    name="item-is-available" 
+                                    id="is-available-false" 
+                                    value="0" <?php echo ($isAvailable === 0) ? "checked" : NULL; ?>
+                                    class="cursor-pointer w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="is-available-info" class="w-1/3">
-                    <p class="text-md text-blue-500">Is Available:</p>
-                    <h2 class="text-2xl"><?php echo ($isAvailable === 1 ? "TRUE" : "FALSE"); ?></h2>
+                <div class="flex justify-between mt-3">
+                    <a href="./index.php"><button id="button-cancel-delete" class="w-57 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button></a>
+                    <input type="submit" value="Add Item" class="w-57 cursor-pointer px-6 py-2 bg-red-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
                 </div>
-            </div>
-            <div id="bottom-info" class="flex flex-row items-center justify-evenly">
-                <div id="cost-price-info" class="w-1/3">
-                    <p class="text-md text-blue-500">Cost Price:</p>
-                    <h2 class="text-2xl">₱<?php echo $costPrice; ?></h2>
-                </div>
-                <div id="sale-price-info" class="w-1/3">
-                    <p class="text-md text-blue-500">Sale Price:</p>
-                    <h2 class="text-2xl">₱<?php echo $sellPrice; ?></h2>
-                </div>
-                <div id="quantity-info" class="w-1/3">
-                    <p class="text-md text-blue-500">Quantity:</p>
-                    <h2 class="text-2xl"><?php echo $quantity; ?> unit(s)</h2>
-                </div>
-            </div> 
+                <p class="text-center text-red-500 my-2">This action is <span class="font-semibold">PERMANENT</span></p>
+            </form>
         </div>
-        <div id="item-buttons" class="max-w-full justify-between mt-4 mb-2 px-6">
-            <a href="index.php"><button id="button-cancel-delete" class="w-56 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button></a>
-            <a href="edit-item.php?id=<?php echo $_GET['id']; ?>"><button id="button-delete-item" class="w-56 cursor-pointer bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition">Edit Item</button></a>
-        </div>
-        <p class="text-center text-red-500 mb-2">This action is <span class="font-semibold">PERMANENT</span></p>
     </div>
 </body>
 <script></script>

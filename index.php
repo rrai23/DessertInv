@@ -1,4 +1,10 @@
 <?php 
+/*
+to do:
+    -add some way to upload images to /image/ (automatically sets the name of the file to its file type)
+    -make it so theyre automatically named to /image/item-name.jpg
+    -edit form
+*/
 include 'db.php';
 $conn->close();
 ?>
@@ -33,7 +39,7 @@ $conn->close();
             <input type="text" name="item-name" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <label for="item-category" class="font-medium">Category: </label><br>
             <select name="item-category" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
-                <option value="Frozen_Dessert" class="checked:bg-blue-500 checked:text-white">Frozen Dessert</option>
+                <option value="Frozen_Dessert">Frozen Dessert</option>
                 <option value="Cold_Dessert">Cold Dessert</option>
                 <option value="Hot_Dessert">Hot Dessert</option>
                 <option value="Room_Temperature_Dessert">Room Temperature Dessert</option>
@@ -56,7 +62,7 @@ $conn->close();
                 </div>
             </div>
             <label for="item-quantity" class="font-medium">Quantity: </label>
-            <input type="number" name="item-quantity" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+            <input type="number" name="item-quantity" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <div class="flex justify-center">
                 <input type="submit" value="Add Item" class="w-full cursor-pointer font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             </div>
