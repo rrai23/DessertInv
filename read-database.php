@@ -16,8 +16,8 @@ if ($result->num_rows > 0){
                  . //<th class='font-semibold py-1.5 px-1'>Image Path</th>
                 "<th class='font-semibold py-1.5 px-1 text-center w-30'>Last Restocked</th>
                 <th class='font-semibold py-1.5 px-1 text-center w-17'>In Stock</th>
-                <th class='font-semibold py-1.5 px-1 text-center w-13'>Sale</th>
-                <th class='font-semibold py-1.5 px-1 text-center w-13'>Cost</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-20'>Sale</th>
+                <th class='font-semibold py-1.5 px-1 text-center w-20'>Cost</th>
                 <th class='font-semibold py-1.5 px-1 text-center w-13'>Stock</th>
                 <th class='font-semibold py-1.5 px-1 w-8'></th>
                 <th class='font-semibold py-1.5 px-1 w-7'></th>
@@ -33,9 +33,13 @@ if ($result->num_rows > 0){
         $category = str_replace("_", " ", $row["category"]);
 
         //long and short description
-        $shortDesc = strlen($row["description"]) > 70 ? substr($row["description"], 0, 70) : $row["description"];
+        $shortDesc = strlen($row["description"]) > 60 ? substr($row["description"], 0, 60) : $row["description"];
         $row["description"] = !empty($row["description"]) ? $row["description"] : "No description available.";
         
+        //pricing
+        $row['cost_price'] = number_format(floatval($row['cost_price']), 2);
+        $row['sell_price'] = number_format(floatval($row['sell_price']), 2);
+
         //alternating gray background
         echo ($rowCnt%2==0) ? "<tr class='bg-gray-100'>" : "<tr class='bg-white'>" ;
         $rowCnt++;
@@ -46,7 +50,7 @@ if ($result->num_rows > 0){
             <td class='text-justify py-1.5 pr-4'>
                 <div class='description-container'>";
 
-                if (strlen($row["description"]) > 70) {
+                if (strlen($row["description"]) > 60) {
                     echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
                         <a href='#' class='expand-link text-blue-500'>[...]</a>
@@ -58,17 +62,17 @@ if ($result->num_rows > 0){
                 } else {
                     echo $row["description"];
                 }
-                
+
         echo    "</div>
             </td>"
              . //<td>" . $row["image_path"] . "</td>
             "<td class='text-center'>" . $row["last_restocked"] . "</td>
             <td class='text-center'>" . ($row["is_available"] ? "TRUE" : "FALSE") . "</td>
-            <td class='text-right pr-2'>" . $row["sell_price"] . "</td>
-            <td class='text-right pr-2'>" . $row["cost_price"] . "</td>
+            <td class='text-right pr-2'>₱" . $row["sell_price"] . "</td>
+            <td class='text-right pr-2'>₱" . $row["cost_price"] . "</td>
             <td class='text-right pr-2'>" . $row["quantity"] . "</td>
             <td class='p-1'>
-                <a href='edit-item-form.php'>
+                <a href='edit-item-form.php?id=" . $row['id'] . "'>
                     <img src='src/edit.png' alt='edit' width='18px'>
                 </a>
             </td>

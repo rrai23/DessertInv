@@ -11,6 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($name && $category && $sell_price && $cost_price && $quantity){
         $image_path = "/image/" . str_replace(" ", "-", $name) . ".jpg";
         $last_restocked = date("Y-m-d");
+        $sell_price = floatval($sell_price);
+        $cost_price = floatval($cost_price);
 
         $sql = "INSERT INTO $table 
         (name, category, description, image_path, last_restocked, sell_price, cost_price, quantity) 

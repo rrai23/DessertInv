@@ -8,6 +8,9 @@
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
     --color-red-700: oklch(0.505 0.213 27.518);
+    --color-yellow-500: oklch(0.795 0.184 86.047);
+    --color-green-500: oklch(0.723 0.219 149.579);
+    --color-green-700: oklch(0.527 0.154 150.069);
     --color-blue-500: oklch(0.623 0.214 259.815);
     --color-blue-600: oklch(0.546 0.245 262.881);
     --color-blue-700: oklch(0.488 0.243 264.376);
@@ -369,6 +372,9 @@
   .my-1 {
     margin-block: calc(var(--spacing) * 1);
   }
+  .my-2 {
+    margin-block: calc(var(--spacing) * 2);
+  }
   .mt-0 {
     margin-top: calc(var(--spacing) * 0);
   }
@@ -393,6 +399,9 @@
   .mr-4 {
     margin-right: calc(var(--spacing) * 4);
   }
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -401,6 +410,9 @@
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
   }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
@@ -492,8 +504,29 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+  .h-fit {
+    height: fit-content;
+  }
   .h-screen {
     height: 100vh;
+  }
+  .max-h-10 {
+    max-height: calc(var(--spacing) * 10);
+  }
+  .max-h-20 {
+    max-height: calc(var(--spacing) * 20);
+  }
+  .max-h-40 {
+    max-height: calc(var(--spacing) * 40);
+  }
+  .max-h-50 {
+    max-height: calc(var(--spacing) * 50);
   }
   .max-h-none {
     max-height: none;
@@ -528,8 +561,14 @@
   .w-13 {
     width: calc(var(--spacing) * 13);
   }
+  .w-15 {
+    width: calc(var(--spacing) * 15);
+  }
   .w-17 {
     width: calc(var(--spacing) * 17);
+  }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
   }
   .w-30 {
     width: calc(var(--spacing) * 30);
@@ -554,6 +593,9 @@
   }
   .w-60 {
     width: calc(var(--spacing) * 60);
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;
@@ -1225,6 +1267,9 @@
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -1236,6 +1281,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-yellow-500 {
+    background-color: var(--color-yellow-500);
   }
   .-bg-conic {
     --tw-gradient-position: in oklab;
@@ -1459,6 +1507,9 @@
   }
   .pr-4 {
     padding-right: calc(var(--spacing) * 4);
+  }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
   }
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
@@ -2128,6 +2179,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-blue-700);
+      }
+    }
+  }
+  .hover\:bg-green-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-700);
       }
     }
   }

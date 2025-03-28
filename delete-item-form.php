@@ -11,7 +11,7 @@ if($result && $result->num_rows > 0) {
     $name = $item['name'];
     $category = $item['category'];
     $description = $item['description'];
-    $imagePath = $item['image_path'];
+    $imagePath = ltrim($item['image_path'], '/');
     $lastRestocked = $item['last_restocked'];
     $isAvailable = ($item['quantity'] > 0) ? 1: 0;
     $sellPrice = number_format(floatval($item['sell_price']), 2);
@@ -41,11 +41,11 @@ $conn->close();
         </div>
     </nav>
 
-    <div id="item-info-div" class="max-w-lg rounded-xl bg-white shadow-lg overflow-hidden mx-auto mt-6 py-4 px-6">
-        <div class="item-info">
-            <!--<img alt="selected item image">-->
-            <h1 class="text-xl font-semibold text-center"><?php echo $name; ?></h1>
-            <h2 class="text-sm text-center text-blue-500 mb-3"><?php echo str_replace("_", " ", $category); ?></h2>
+    <div id="item-info-div" class="max-w-lg rounded-xl bg-white shadow-lg overflow-hidden mx-auto mt-6 mb-6">
+        <img src="<?php echo $imagePath ?>" alt="selected item image" class="w-full max-h-50 object-cover">
+        <div class="item-info pb-4 px-6">
+            <h1 class="text-xl font-semibold text-center mt-2"><?php echo $name; ?></h1>
+            <h2 class="text-sm text-center text-blue-500 mb-1"><?php echo str_replace("_", " ", $category); ?></h2>
             <p class="text-md text-justify mb-4"><?php echo $description; ?></p>
             <div id="middle-info" class="flex flex-row">
                 <div id="last-restocked-info" class="w-1/3">
@@ -76,11 +76,11 @@ $conn->close();
                 </div>
             </div> 
         </div>
-        <div id="item-buttons" class="max-w-full justify-between mt-4 mb-2">
+        <div id="item-buttons" class="max-w-full justify-between mt-4 mb-1 px-6">
             <a href="index.php"><button id="button-cancel-delete" class="w-56 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button></a>
             <a href="delete-item.php?id=<?php echo $_GET['id']; ?>"><button id="button-delete-item" class="w-56 cursor-pointer bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition">Delete Item</button></a>
         </div>
-        <p class="text-center text-red-500">This action is <span class="font-semibold">PERMANENT</span></p>
+        <p class="text-center text-red-500 mb-2">This action is <span class="font-semibold">PERMANENT</span></p>
     </div>
 </body>
 <script></script>
