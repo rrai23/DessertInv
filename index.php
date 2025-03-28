@@ -12,21 +12,20 @@
             <h1 class="text-3xl font-bold text-blue-500">Dessert Inventory</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
-            <button id="button-view-inv" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition active">View inventory</button>
-            <button id="button-add-item" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-7700 transition">Add Item</button>
+            <button id="button-view-inv" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition active">View inventory</button>
+            <button id="button-add-item" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add Item</button>
         </div>
     </nav>
 
-    <!--to be styled-->
-    <div id="inventory-table-div" class="hidden">
+    <!--to be styled: you can style the table in read-database.php-->
+    <div id="inventory-table-div" class="">
         <h1>Inventory table</h1>
-        <!--Well change the inner html of this with php-->
+        <?php include 'read-database.php'; ?>
     </div>
 
-    <!--to be styled-->
-    <div id="add-item-form-div" class="max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-12 p-6">
+    <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-12 p-6">
         <h1 class="text-xl font-semibold text-center">Add Item</h1>
-        <form action="add-item.php" method="get">
+        <form id="add-item-form" action="add-item.php" method="post">
             <label for="item-name" class="font-medium">Item Name: </label><br>
             <input type="text" name="item-name" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <label for="item-category" class="font-medium">Category: </label><br>
@@ -61,5 +60,55 @@
         </form>
     </div>
 </body>
-<script src="index.js"></script>
+<script>
+    const buttonViewInv = document.getElementById("button-view-inv");
+    const buttonAddItem = document.getElementById("button-add-item");
+    const inventoryTableDiv = document.getElementById("inventory-table-div");
+    const addItemFormDiv = document.getElementById("add-item-form-div");
+    const addItemForm = document.getElementById("add-item-form");
+
+    //Nav-button functionality
+    function showElement(toShow, toHide){
+        toShow.classList.remove("hidden");
+        toHide.classList.add("hidden");
+    }
+    buttonViewInv.addEventListener('click', () => {
+        showElement(inventoryTableDiv, addItemFormDiv);
+    })
+    buttonAddItem.addEventListener('click', () => {
+        showElement(addItemFormDiv, inventoryTableDiv);
+    })
+
+    //toggling description length in table
+    document.addEventListener("DOMContentLoaded", () => {
+        const expandLinks = document.querySelectorAll(".expand-link");
+        const collapseLinks = document.querySelectorAll(".collapse-link");
+
+        expandLinks.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const container = event.target.closest(".description-container");
+                showElement(container.querySelector(".full-description"), container.querySelector(".short-description"));
+            });
+        });
+        
+        collapseLinks.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const container = event.target.closest(".description-container");
+                showElement(container.querySelector(".short-description"), container.querySelector(".full-description"));
+            });
+        });
+    });
+
+    //Alerting successful item add
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    if (message) {
+        setTimeout(() => {
+            alert(message);
+        }, 100);
+        history.replaceState({}, '', window.location.pathname);
+    }
+</script>
 </html>
