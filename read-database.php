@@ -1,12 +1,9 @@
 <?php
 require 'db.php';
 
-$table = "crem_de_la_crem";
-
 $sql = "SELECT * FROM $table";
 $result = $conn->query($sql);
 if ($result->num_rows > 0){
-    $tableName = strtoupper(str_replace("_", " ", $table));
     echo "<h1 class='text-xl font-semibold text-center'>$tableName</h1>
     <div class='border border-blue-500 rounded-lg overflow-hidden mt-1'>
     <table class='border-collapse w-full text-left'>
@@ -47,16 +44,22 @@ if ($result->num_rows > 0){
             <td class='pl-1'>" . $row["name"] . "</td>
             <td>" . $category . "</td>
             <td class='text-justify py-1.5 pr-4'>
-                <div class='description-container'>
-                    <span class='short-description'>
+                <div class='description-container'>";
+
+                if (strlen($row["description"]) > 70) {
+                    echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
                         <a href='#' class='expand-link text-blue-500'>[...]</a>
                     </span>
                     <span class='full-description hidden'>
                         " . htmlspecialchars($row["description"]) . " 
                         <a href='#' class='collapse-link text-blue-500'>[Hide]</a>
-                    </span>
-                </div>
+                    </span>"; 
+                } else {
+                    echo $row["description"];
+                }
+
+        echo    "</div>
             </td>"
              . //<td>" . $row["image_path"] . "</td>
             "<td class='text-center'>" . $row["last_restocked"] . "</td>
@@ -64,8 +67,16 @@ if ($result->num_rows > 0){
             <td class='text-right pr-2'>" . $row["sell_price"] . "</td>
             <td class='text-right pr-2'>" . $row["cost_price"] . "</td>
             <td class='text-right pr-2'>" . $row["quantity"] . "</td>
-            <td class='p-1'><a href='edit-item.php'><img src='src/edit.png' alt='edit' width='18px'></a></td>
-            <td><a href='delete-item.php'><img src='src/delete.png' alt='delete' width='18px'></a></td>
+            <td class='p-1'>
+                <a href='edit-item-form.php'>
+                    <img src='src/edit.png' alt='edit' width='18px'>
+                </a>
+            </td>
+            <td>
+                <a href='delete-item-form.php?id=" . $row['id'] . "'>
+                    <img src='src/delete.png' alt='delete' width='18px'>
+                </a>
+            </td>
         </tr>";
     }
     echo "</table></div>";

@@ -1,3 +1,8 @@
+<?php
+require 'db.php';
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +54,8 @@
             </div> 
         </div>
         <div id="item-buttons" class="max-w-full justify-between mt-4 mb-2">
-            <button id="button-cancel-delete" class="w-56 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button>
-            <button id="button-delete-item" class="w-56 cursor-pointer bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition">Delete Item</button>
+            <a href="index.php"><button id="button-cancel-delete" class="w-56 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button></a>
+            <a href="delete-item.php?id=<?php echo $_GET['id']; ?>"><button id="button-delete-item" class="w-56 cursor-pointer bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition">Delete Item</button></a>
         </div>
         <p class="text-center text-red-500">This action is <span class="font-semibold">PERMANENT</span></p>
     </div>

@@ -1,9 +1,14 @@
+<?php 
+include 'db.php';
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crem de la Crem | Inventory</title>
+    <title>Inventory | <?php echo $tableName; ?></title>
     <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="bg-gray-100">
@@ -72,9 +77,11 @@
     }
     buttonViewInv.addEventListener('click', () => {
         showElement(inventoryTableDiv, addItemFormDiv);
+        document.title = "Inventory | <?php echo $tableName; ?>";
     })
     buttonAddItem.addEventListener('click', () => {
         showElement(addItemFormDiv, inventoryTableDiv);
+        document.title = "Add Item | <?php echo $tableName; ?>";
     })
 
     //toggling description length in table
@@ -108,5 +115,16 @@
         }, 100);
         history.replaceState({}, '', window.location.pathname);
     }
+
+    //redirecting back to this page from delete-item.php
+    document.addEventListener("DOMContentLoaded", ()=> {
+        const hash = window.location.hash;
+        if(hash === '#inventory-table-div'){
+            showElement(inventoryTableDiv, addItemFormDiv);
+        } else if (hash === '#add-item-form-div') {
+            showElement(addItemFormDiv, inventoryTableDiv);
+        }
+        history.replaceState({}, '', window.location.pathname);
+    })
 </script>
 </html>

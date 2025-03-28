@@ -1,8 +1,6 @@
 <?php
 require 'db.php';
 
-$table = "crem_de_la_crem";
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $name = isset($_POST["item-name"]) ? $conn->real_escape_string($_POST["item-name"]) : null;
     $category = isset($_POST["item-category"]) ? $conn->real_escape_string($_POST["item-category"]) : null;
