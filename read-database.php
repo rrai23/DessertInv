@@ -10,7 +10,7 @@ if ($result->num_rows > 0){
         <thead class='bg-blue-500 text-white'>
             <tr>
                 <th class='font-semibold py-1.5 px-1 pl-3 w-10'>ID</th>
-                <th class='font-semibold py-1.5 px-1 w-50'>Name</th>
+                <th class='font-semibold py-1.5 px-1 w-40'>Name</th>
                 <th class='font-semibold py-1.5 px-1 w-40'>Category</th>
                 <th class='font-semibold py-1.5 px-1'>Description</th>"
                  . //<th class='font-semibold py-1.5 px-1'>Image Path</th>
@@ -30,7 +30,7 @@ if ($result->num_rows > 0){
         $category = str_replace("_", " ", $row["category"]);
 
         //long and short description
-        $shortDesc = strlen($row["description"]) > 60 ? substr($row["description"], 0, 60) : $row["description"];
+        $shortDesc = strlen($row["description"]) > 65 ? substr($row["description"], 0, 65) : $row["description"];
         $row["description"] = !empty($row["description"]) ? $row["description"] : "No description available.";
         
         //pricing
@@ -47,7 +47,7 @@ if ($result->num_rows > 0){
             <td class='text-justify py-1.5 pr-4'>
                 <div class='description-container'>";
 
-                if (strlen($row["description"]) > 60) {
+                if (strlen($row["description"]) >65) {
                     echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
                         <a href='#' class='expand-link text-blue-500'>[...]</a>

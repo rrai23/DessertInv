@@ -1,13 +1,4 @@
-<?php 
-/*
-to do:
-    -add some way to upload images to /image/ (automatically sets the name of the file to its file type)
-    -add a way to change images
-*/
-include 'db.php';
-$conn->close();
-?>
-
+<!--FIX ADD/EDIT/DELETE ITEM NO IMAGE INPUT-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,39 +22,45 @@ $conn->close();
         <?php include 'read-database.php'; ?>
     </div>
 
-    <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto mt-6 p-6">
-        <h1 class="text-xl font-semibold text-center">Add Item</h1>
-        <form id="add-item-form" action="add-item.php" method="post">
-            <label for="item-name" class="font-medium">Item Name: </label><br>
-            <input type="text" name="item-name" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
-            <label for="item-category" class="font-medium">Category: </label><br>
-            <select name="item-category" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
-                <option value="Frozen_Dessert">Frozen Dessert</option>
-                <option value="Cold_Dessert">Cold Dessert</option>
-                <option value="Hot_Dessert">Hot Dessert</option>
-                <option value="Room_Temperature_Dessert">Room Temperature Dessert</option>
-                <option value="Bite-sized_Dessert">Bite-sized Dessert</option>
-            </select><br>
-            <label for="item-description" class="font-medium">Description</label><br>
-            <textarea
-            name="item-description"
-            rows="4" cols="50"
-            class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            placeholder="Enter a description of the item..."></textarea><br>
-            <div id="item-prices" class="flex space-x-4">
-                <div>
-                    <label for="item-sell-price" class="font-medium">Selling Price: </label>
-                    <input type="number" name="item-sell-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+    <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto my-6">
+        <form id="add-item-form" action="add-item.php" method="post" enctype="multipart/form-data">
+            <img id="image-preview" src="" alt="Uploaded image preview" class="w-full max-h-50 object-cover">
+            <div class="p-6 pt-0 mt-2.5">
+                <div class="flex justify-center">
+                    <label for="item-image-input" class="flex justify-center w-50 px-4 py-2 border border-blue-500 rounded cursor-pointer hover:bg-blue-200">Upload your image</label>
+                    <input type="file" name="item-image-input" id="item-image-input" style="display: none;" accept="image/*"><br>
                 </div>
-                <div>
-                    <label for="item-cost-price" class="font-medium">Cost Price: </label>
-                    <input type="number" name="item-cost-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                <label for="item-name" class="font-medium">Item Name: </label><br>
+                <input type="text" name="item-name" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                <label for="item-category" class="font-medium">Category: </label><br>
+                <select name="item-category" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    <option value="Frozen_Dessert">Frozen Dessert</option>
+                    <option value="Cold_Dessert">Cold Dessert</option>
+                    <option value="Hot_Dessert">Hot Dessert</option>
+                    <option value="Room_Temperature_Dessert">Room Temperature Dessert</option>
+                    <option value="Bite-sized_Dessert">Bite-sized Dessert</option>
+                </select><br>
+                <label for="item-description" class="font-medium">Description</label><br>
+                <textarea
+                name="item-description"
+                rows="4" cols="50"
+                class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Enter a description of the item..."></textarea><br>
+                <div id="item-prices" class="flex space-x-4">
+                    <div>
+                        <label for="item-sell-price" class="font-medium">Selling Price: </label>
+                        <input type="number" name="item-sell-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    </div>
+                    <div>
+                        <label for="item-cost-price" class="font-medium">Cost Price: </label>
+                        <input type="number" name="item-cost-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    </div>
                 </div>
-            </div>
-            <label for="item-quantity" class="font-medium">Quantity: </label>
-            <input type="number" name="item-quantity" step="1" min="0" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
-            <div class="flex justify-center">
-                <input type="submit" value="Add Item" class="w-full cursor-pointer font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                <label for="item-quantity" class="font-medium">Quantity: </label>
+                <input type="number" name="item-quantity" step="1" min="0" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                <div class="flex justify-center">
+                    <input type="submit" value="Add Item" class="w-full cursor-pointer font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                </div>
             </div>
         </form>
     </div>
@@ -130,6 +127,35 @@ $conn->close();
             showElement(addItemFormDiv, inventoryTableDiv);
         }
         history.replaceState({}, '', window.location.pathname);
+    })
+
+    //image-upload
+    const imageInput = document.getElementById('item-image-input');
+    imageInput.addEventListener('change', function(event) {
+    const label = document.querySelector('label[for="item-image-input"]');
+    if (this.files && this.files[0]) {
+        label.textContent = `Change file`;
+    } else {
+        label.textContent = 'Upload your image';
+    }
+    });
+
+    //image preview
+    const imagePreview = document.getElementById('image-preview');
+    imageInput.addEventListener("change", (event) => {
+        event.preventDefault();
+        const file = event.target.files[0];
+        if (file){
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+                imagePreview.classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.src = "";
+            imagePreview.classList.add("hidden");
+        }
     })
 </script>
 </html>

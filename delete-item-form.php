@@ -12,6 +12,7 @@ if($result && $result->num_rows > 0) {
     $category = $item['category'];
     $description = $item['description'];
     $imagePath = ltrim($item['image_path'], '/');
+    $filePath = __DIR__ . $imagePath;
     $lastRestocked = $item['last_restocked'];
     $isAvailable = ($item['quantity'] > 0) ? 1: 0;
     $sellPrice = number_format(floatval($item['sell_price']), 2);
