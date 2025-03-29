@@ -26,9 +26,6 @@ if ($result->num_rows > 0){
 
     $rowCnt = 0;
     while ($row = $result->fetch_assoc()){
-        //isavailable
-        $row["is_available"] = $row["quantity"] > 0 ? 1 : 0;
-
         //fixing category
         $category = str_replace("_", " ", $row["category"]);
 

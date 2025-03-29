@@ -2,8 +2,8 @@
 /*
 to do:
     -add some way to upload images to /image/ (automatically sets the name of the file to its file type)
-    -make it so theyre automatically named to /image/item-name.jpg
-    -edit form
+    -add a way to change images
+    -make it so that if you edit the quantity to 0, itll automatically change is available to 0
 */
 include 'db.php';
 $conn->close();

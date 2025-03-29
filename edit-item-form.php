@@ -1,6 +1,4 @@
 <?php
-//fix the cancel button to redirect to index.php not edit-item.php
-//make edit-item-functional
 require 'db.php';
 
 $id = $_GET['id'];
@@ -15,7 +13,7 @@ if($result && $result->num_rows > 0) {
     $description = $item['description'];
     $imagePath = ltrim($item['image_path'], '/');
     $lastRestocked = $item['last_restocked'];
-    $isAvailable = ($item['quantity'] > 0) ? 1: 0;
+    $isAvailable = ($item["is_available"] ? TRUE : FALSE);
     $sellPrice = number_format(floatval($item['sell_price']), 2);
     $costPrice = number_format(floatval($item['cost_price']), 2);
     $quantity = $item['quantity'];
@@ -46,7 +44,7 @@ $conn->close();
     <div id="edit-item-form-div">
         <div id="item-info" class="bg-white max-w-lg rounded-lg shadow-lg overflow-hidden mx-auto my-6 px-6 pt-2">
             <h1 class="text-xl font-semibold text-center mt-2">Edit Item</h1>
-            <form id="edit-item-form" action="edit-item.php" method="post">
+            <form id="edit-item-form" action="edit-item.php?id=<?php echo $id; ?>" method="post">
                 <label for="item-name" class="font-medium">Item Name: </label><br>
                 <input type="text" name="item-name" value="<?php echo $name; ?>" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                 <label for="item-category" class="font-medium">Category: </label><br>
@@ -62,8 +60,7 @@ $conn->close();
                 name="item-description"
                 rows="6" cols="50"
                 class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                placeholder="Enter a description of the item..."><?php echo $description; ?>
-                </textarea><br>
+                placeholder="Enter a description of the item..."><?php echo trim($description); ?></textarea><br>
                 <div id="item-prices" class="flex space-x-4">
                     <div>
                         <label for="item-sell-price" class="font-medium">Selling Price: </label>
@@ -74,41 +71,54 @@ $conn->close();
                         <input type="number" name="item-cost-price" value="<?php echo $costPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                     </div>
                 </div>
-                <div id="item-stocks" class="flex space-x-4">
-                    <div class="w-1/2">
+                <div id="item-bottom" class="flex space-x-4">
+                    <div class="w-1/3">
+                        <label for="item-last-restocked" class="font-medium">Last Restocked: </label>
+                        <input type="date" id="item-last-restocked" name="item-last-restocked" value="<?php echo $lastRestocked ?>" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div class="w-1/3">
                         <label for="item-quantity" class="font-medium">Quantity: </label>
                         <input type="number" name="item-quantity" value="<?php echo $quantity; ?>" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                     </div>
-                    <div class="w-1/2">
-                        <p class="font-medium">In Stock: </p>
-                        <div id="in-stock-radio" class="flex items-center justify-evenly my-3">
-                            <div id="in-stock-radio-true-div" class="items-center flex space-x-3">    
-                                <label for="is-available-true" class="text-gray-700 font-medium cursor-pointer">TRUE</label>
+                    <div class="w-1/3">
+                        <p class="font-medium mb-1">In Stock: </p>
+                        <div id="in-stock-radio" class="flex justify-between items-center mt-3">
+                            <div id="in-stock-radio-true-div" class="flex items-center space-x-2">    
                                 <input type="radio" 
                                     name="item-is-available" 
                                     id="is-available-true" 
-                                    value="1" <?php echo ($isAvailable === 1) ? "checked" : NULL; ?>
+                                    value="1" <?php echo ($isAvailable) ? "checked" : NULL; ?>
                                     class="cursor-pointer w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                <label for="is-available-true" class="text-gray-700 font-medium cursor-pointer">TRUE</label>
                             </div>
-                            <div id="in-stock-radio-false-div" class="items-center flex space-x-3">
-                                <label for="is-available-false" class="text-gray-700 font-medium cursor-pointer">FALSE</label>
+                            <div id="in-stock-radio-false-div" class="flex items-center space-x-2">
                                 <input type="radio" 
                                     name="item-is-available" 
                                     id="is-available-false" 
-                                    value="0" <?php echo ($isAvailable === 0) ? "checked" : NULL; ?>
+                                    value="0" <?php echo (!$isAvailable) ? "checked" : NULL; ?>
                                     class="cursor-pointer w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                <label for="is-available-false" class="text-gray-700 font-medium cursor-pointer">FALSE</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-between mt-3">
-                    <a href="./index.php"><button id="button-cancel-delete" class="w-57 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button></a>
-                    <input type="submit" value="Add Item" class="w-57 cursor-pointer px-6 py-2 bg-red-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                    <button id="button-cancel-delete" class="w-57 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cancel</button>
+                    <input type="submit" value="Edit Item" class="w-57 cursor-pointer px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
                 </div>
-                <p class="text-center text-red-500 my-2">This action is <span class="font-semibold">PERMANENT</span></p>
+                <p class="text-center text-red-500 mt-1 mb-2">This action is <span class="font-semibold">PERMANENT</span></p>
             </form>
         </div>
     </div>
 </body>
-<script></script>
+<script>
+const buttonCancel = document.getElementById("button-cancel-delete");
+buttonCancel.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.href = './index.php';
+})
+
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('item-last-restocked').setAttribute('max', today);
+</script>
 </html>
