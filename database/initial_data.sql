@@ -22,4 +22,54 @@ VALUES
     50.00, 
     30.00, 
     300
+),
+(
+   'Biscoff Float', 
+   'Frozen_Dessert', 
+   'An indulgent layered dessert combining the caramelized sweetness of Biscoff cookies with smooth whipped cream and creamy custard. Every bite is a delightful harmony of textures and flavors, perfect for dessert lovers seeking a refined yet comforting treat.', 
+   '/image/Biscoff-Float.jpg', 
+   CURRENT_DATE, 
+   150.00, 
+   120.00, 
+   80
+),
+(
+    'Black Sambo', 
+    'Cold_Dessert', 
+    'A two-layered gelatin dessert showcasing the richness of creamy milk on one side and decadent chocolate on the other. Smooth, chilled, and satisfying, this treat is perfect for those who adore classic contrasts in flavor and texture.', 
+    '/image/Black-Sambo.jpg', 
+    CURRENT_DATE, 
+    150.00, 
+    100.00, 
+    120
+),
+(
+    'Brigadeiro Cake', 
+    'Frozen_Dessert', 
+    'A Brazilian-inspired frozen treat featuring layers of rich chocolate cake and creamy Brigadeiro frosting. This irresistible dessert offers the ultimate chocolate experience with a soft, fudgy texture and intense flavor.', 
+    '/image/Brigadeiro-Cake.jpg', 
+    CURRENT_DATE, 
+    180.00, 
+    150.00, 
+    60
+),
+(
+    'Buko Pandan', 
+    'Cold_Dessert', 
+    'A Filipino classic made with tender young coconut, fragrant pandan jelly, and sweetened cream. This refreshing dessert delivers a perfect balance of tropical flavors and creamy indulgence, making it a favorite for any occasion.', 
+    '/image/Buko-Pandan.jpg', 
+    CURRENT_DATE, 
+    60.00, 
+    35.00, 
+    70
+),
+(
+    'Cookies & Cream Cheese Cake', 
+    'Cold_Dessert', 
+    'A rich, creamy cheesecake infused with the nostalgic flavor of cookies and cream. Featuring a velvety smooth texture and a delightful crunch from cookie pieces, this dessert is the ultimate blend of classic comfort and gourmet flair.', 
+    '/image/Cookies-&-Cream-Cheese-Cake.jpg', 
+    CURRENT_DATE, 
+    200.00, 
+    180.00, 
+    50
 );

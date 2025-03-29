@@ -1,4 +1,8 @@
-<!--FIX ADD/EDIT/DELETE ITEM NO IMAGE INPUT-->
+<?php
+require 'db.php';
+$tableName = strtoupper(str_replace("_", " ", $table));
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
