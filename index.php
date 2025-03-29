@@ -24,10 +24,10 @@
 
     <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-white m-auto my-6">
         <form id="add-item-form" action="add-item.php" method="post" enctype="multipart/form-data">
-            <img id="image-preview" src="" alt="Uploaded image preview" class="w-full max-h-50 object-cover">
+            <img id="image-preview" src="./image/placeholder.jpg" alt="Uploaded image preview" class="w-full max-h-50 object-cover border border-gray-300 rounded-xl">
             <div class="p-6 pt-0 mt-2.5">
                 <div class="flex justify-center">
-                    <label for="item-image-input" class="flex justify-center w-50 px-4 py-2 border border-blue-500 rounded cursor-pointer hover:bg-blue-200">Upload your image</label>
+                    <label for="item-image-input" class="flex justify-center w-50 px-4 py-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-300">Upload your image</label>
                     <input type="file" name="item-image-input" id="item-image-input" style="display: none;" accept="image/*"><br>
                 </div>
                 <label for="item-name" class="font-medium">Item Name: </label><br>
@@ -149,12 +149,13 @@
             const reader = new FileReader();
             reader.onload = (e) => {
                 imagePreview.src = e.target.result;
-                imagePreview.classList.remove("hidden");
+                imagePreview.classList.remove("hidden", "border", "border-gray-300", "rounded-xl");
+
             };
             reader.readAsDataURL(file);
         } else {
-            imagePreview.src = "";
-            imagePreview.classList.add("hidden");
+            imagePreview.src = "./image/placeholder.jpg";
+            imagePreview.classList.add("hidden", "border", "border-gray-300", "rounded-xl");
         }
     })
 </script>

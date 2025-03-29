@@ -44,10 +44,10 @@ $conn->close();
     <div id="edit-item-form-div">
         <div id="item-info" class="bg-white max-w-lg rounded-lg shadow-lg overflow-hidden mx-auto my-6">
             <form id="edit-item-form" action="edit-item.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
-                <img id="image-preview" src="<?php echo $imagePath; ?>" alt="Uploaded image preview" class="w-full max-h-50 rounded object-cover">
+                <img id="image-preview" src="<?php echo ($imagePath) ? $imagePath: "./images/placeholder.jpg"; ?>" alt="Uploaded image preview" class="w-full max-h-50 object-cover">
                 <div class="p-6 pt-0 mt-2.5">
                     <div class="flex justify-center">
-                        <label for="item-image-input" class="flex justify-center w-50 px-4 py-2 border border-blue-500 rounded cursor-pointer hover:bg-blue-200">Change Image</label>
+                        <label for="item-image-input" class="flex justify-center w-50 px-4 py-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-300">Change Image</label>
                         <input type="file" name="item-image-input" id="item-image-input" style="display: none;" accept="image/*"><br>
                     </div>
                     <label for="item-name" class="font-medium">Item Name: </label><br>
@@ -152,12 +152,12 @@ imageInput.addEventListener("change", (event) => {
         const reader = new FileReader();
         reader.onload = (e) => {
             imagePreview.src = e.target.result;
-            imagePreview.classList.remove("hidden");
+            imagePreview.classList.remove("hidden", "border", "border-gray-300", "rounded-xl");
         };
         reader.readAsDataURL(file);
     } else {
         imagePreview.src = "<?php echo $imagePath; ?>";
-        imagePreview.classList.add("hidden");
+        imagePreview.classList.add("hidden", "border", "border-gray-300", "rounded-xl");
     }
 })
 </script>
