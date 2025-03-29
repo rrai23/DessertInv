@@ -72,4 +72,104 @@ VALUES
     200.00, 
     180.00, 
     50
+),
+(
+   'Panna Cotta', 
+   'Cold_Dessert', 
+   'A creamy and silky Italian dessert made from sweetened cream thickened with gelatin, often served with fruit or caramel sauce. It offers a light and elegant way to end a meal.', 
+   '/image/Panna-Cotta.jpg', 
+   CURRENT_DATE, 
+   150.00, 
+   100.00, 
+   70
+),
+(
+   'Crème Brûlée', 
+   'Cold_Dessert', 
+   'A classic French custard dessert topped with a layer of hardened caramelized sugar. Its smooth custard and crackling sugar make for a delightful texture contrast.', 
+   '/image/Creme-Brulee.jpg', 
+   CURRENT_DATE, 
+   200.00, 
+   150.00, 
+   50
+),
+(
+   'Churros', 
+   'Hot_Dessert', 
+   'Crisp, fried dough pastries dusted with cinnamon sugar, served with chocolate or dulce de leche for dipping. Perfect for sharing or indulging in a sweet snack.', 
+   '/image/Churros.jpg', 
+   CURRENT_DATE, 
+   120.00, 
+   80.00, 
+   100
+),
+(
+   'Apple Pie', 
+   'Room_Temperature_Dessert', 
+   'A timeless favorite made with sweetened apple slices baked in a flaky pastry crust. Its warm, comforting flavors are perfect for any occasion.', 
+   '/image/Apple-Pie.jpg', 
+   CURRENT_DATE, 
+   180.00, 
+   130.00, 
+   40
+),
+(
+   'Cannoli', 
+   'Room_Temperature_Dessert', 
+   'A Sicilian dessert featuring a crispy shell filled with sweet ricotta cheese and often garnished with chocolate chips or candied fruit.', 
+   '/image/Cannoli.jpg', 
+   CURRENT_DATE, 
+   150.00, 
+   120.00, 
+   60
+),
+(
+   'Macarons', 
+   'Bite-sized_Dessert', 
+   'Elegant French sandwich cookies made with almond flour, filled with buttercream, ganache, or jam. Their delicate texture and vibrant colors make them a visual and flavorful treat.', 
+   '/image/Macarons.jpg', 
+   CURRENT_DATE, 
+   250.00, 
+   200.00, 
+   50
+),
+(
+   'Baklava', 
+   'Room_Temperature_Dessert', 
+   'A Middle Eastern pastry made with layers of phyllo dough, nuts, and honey syrup. Its rich sweetness and flaky texture make it irresistible.', 
+   '/image/Baklava.jpg', 
+   CURRENT_DATE, 
+   220.00, 
+   180.00, 
+   30
+),
+(
+   'Tart Tatin', 
+   'Room_Temperature_Dessert', 
+   'An upside-down caramelized apple tart that’s both rustic and sophisticated. Its rich caramel flavors and buttery crust are a crowd-pleaser.', 
+   '/image/Tart-Tatin.jpg', 
+   CURRENT_DATE, 
+   200.00, 
+   160.00, 
+   35
+),
+(
+   'Red Velvet Cupcakes', 
+   'Room_Temperature_Dessert', 
+   'Moist, red-colored cupcakes with a hint of cocoa and topped with cream cheese frosting. Each bite offers the perfect balance of sweetness and tanginess.', 
+   '/image/Red-Velvet-Cupcakes.jpg', 
+   CURRENT_DATE, 
+   100.00, 
+   70.00, 
+   80
+),
+(
+   'Éclairs', 
+   'Room_Temperature_Dessert', 
+   'A French pastry made with choux dough, filled with custard or cream, and topped with a glossy chocolate glaze. A luxurious treat for dessert lovers.', 
+   '/image/Eclairs.jpg', 
+   CURRENT_DATE, 
+   150.00, 
+   120.00, 
+   60
 );

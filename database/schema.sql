@@ -1,9 +1,9 @@
 /*Initial database and table structure*/
 
+/*Use this to create the database*/
 CREATE DATABASE IF NOT EXISTS `dessert_inventory`;
 
-USE `dessert_inventory`;
-
+/*Use this to create the table*/
 CREATE TABLE IF NOT EXISTS `crem_de_la_crem` (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
