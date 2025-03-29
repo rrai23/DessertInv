@@ -64,11 +64,11 @@ $conn->close();
                 <div id="item-prices" class="flex space-x-4">
                     <div>
                         <label for="item-sell-price" class="font-medium">Selling Price: </label>
-                        <input type="number" name="item-sell-price" value="<?php echo $sellPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                        <input type="number" name="item-sell-price" min="0.00" value="<?php echo $sellPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                     </div>
                     <div>
                         <label for="item-cost-price" class="font-medium">Cost Price: </label>
-                        <input type="number" name="item-cost-price" value="<?php echo $costPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                        <input type="number" name="item-cost-price" min="0.00" value="<?php echo $costPrice; ?>" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                     </div>
                 </div>
                 <div id="item-bottom" class="flex space-x-4">
@@ -78,7 +78,7 @@ $conn->close();
                     </div>
                     <div class="w-1/3">
                         <label for="item-quantity" class="font-medium">Quantity: </label>
-                        <input type="number" name="item-quantity" value="<?php echo $quantity; ?>" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                        <input type="number" id="item-quantity" name="item-quantity" min="0" value="<?php echo $quantity; ?>" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                     </div>
                     <div class="w-1/3">
                         <p class="font-medium mb-1">In Stock: </p>
@@ -112,13 +112,28 @@ $conn->close();
     </div>
 </body>
 <script>
+//cancel button functionality
 const buttonCancel = document.getElementById("button-cancel-delete");
 buttonCancel.addEventListener('click', (event) => {
     event.preventDefault();
     window.location.href = './index.php';
 })
 
+//sets max value for date to today
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('item-last-restocked').setAttribute('max', today);
+
+//if quantity is set to 0, isAvailable is set to false
+const quantityInput = document.getElementById('item-quantity');
+const isAvailableTrue = document.getElementById('is-available-true');
+const isAvailableFalse = document.getElementById('is-available-false');
+quantityInput.addEventListener('input', (event) => {
+    event.preventDefault();
+    if(parseInt(quantityInput.value, 10) === 0){
+        isAvailableFalse.checked = true;
+    } else {
+        isAvailableTrue.checked = true;
+    }
+})
 </script>
 </html>

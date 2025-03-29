@@ -3,7 +3,6 @@
 to do:
     -add some way to upload images to /image/ (automatically sets the name of the file to its file type)
     -add a way to change images
-    -make it so that if you edit the quantity to 0, itll automatically change is available to 0
 */
 include 'db.php';
 $conn->close();
@@ -54,15 +53,15 @@ $conn->close();
             <div id="item-prices" class="flex space-x-4">
                 <div>
                     <label for="item-sell-price" class="font-medium">Selling Price: </label>
-                    <input type="number" name="item-sell-price" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    <input type="number" name="item-sell-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                 </div>
                 <div>
                     <label for="item-cost-price" class="font-medium">Cost Price: </label>
-                    <input type="number" name="item-cost-price" step="0.01" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+                    <input type="number" name="item-cost-price" step="0.01" min="0.00" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
                 </div>
             </div>
             <label for="item-quantity" class="font-medium">Quantity: </label>
-            <input type="number" name="item-quantity" step="1" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
+            <input type="number" name="item-quantity" step="1" min="0" class="w-full my-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"><br>
             <div class="flex justify-center">
                 <input type="submit" value="Add Item" class="w-full cursor-pointer font-medium mt-2 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             </div>
