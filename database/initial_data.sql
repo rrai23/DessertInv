@@ -173,3 +173,7 @@ VALUES
    120.00, 
    60
 );
+
+UPDATE `crem_de_la_crem`
+SET is_available = 0, quantity = 0
+WHERE id >= 9;
