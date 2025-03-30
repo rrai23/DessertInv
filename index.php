@@ -22,7 +22,7 @@ $conn->close();
         </div>
     </nav>
 
-    <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-white mx-6 mt-6 p-2">
+    <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-white mx-6 my-6 p-2">
         <?php include 'read-database.php'; ?>
     </div>
 
