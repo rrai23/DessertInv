@@ -1,0 +1,109 @@
+@import url(Animations.css);
+
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh; 
+    overflow: hidden;
+    background-color: #FEFAED;
+    font-family: "Maven Pro", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: xx-large;
+}
+
+.login {
+    padding: 90px 75px;
+}
+
+img {
+    animation: slideRight 1s ease forwards;
+    opacity: 0;
+}
+
+.login h1 {
+    margin-bottom: -30px;
+    animation: slideRight 1s ease forwards;
+}
+
+.login h5 {
+    margin-bottom: 35px;
+    animation: slideRight 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+.login .loginProper {
+    width: 600px;
+}
+
+.login .loginProper button {
+    width: 70%;
+    background-color: #C1AFFF;
+    font-family: "Maven Pro", sans-serif;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: solid 3px #332727;
+    border-radius: 20px;
+    align-self: center;
+    display: block;
+    margin: 30px auto 0 auto;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: large;
+    transition: 0.4s ease;
+    animation: slideUp 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+.login .loginProper button:hover {
+    background-color: #a48fee;
+    color: #fff2c7;
+}
+
+#input {
+    display: flex;
+    flex-direction: column;
+    animation: slideRight 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+#input label {
+    margin-bottom: 10px;
+    font-size: large;
+    animation: slideRight 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+#input .pass {
+    margin-top: 20px;
+    -webkit-text-security: '*';
+}
+
+#input input {
+    font-size: large;
+    background-color:transparent;
+    border-radius: 13px;
+    padding: 10px 0 10px 15px;
+    border: solid 2px #332727;
+    height: 30px;
+    animation: slideRight 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+
+#input input[type="password"] {
+    -webkit-text-security: '*';
+}
+
+
+
+
+
+
