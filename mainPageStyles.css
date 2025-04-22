@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #FEFAED;
+    font-family: "Maven Pro", sans-serif;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C1AFFF;
+    padding: 10px 0 10px;
+}
+
+header .left {
+    height: 100%;
+    margin-right: 20px;
+}
+
+header .left img {
+    height: 100%;
+}
+
+header #p {
+    font-weight: 1000;
+    text-shadow: 3px 3px 14px #332727;
+    flex: 1;
+    text-align: center;
+    margin-left: 190px;
+    font-size: 3rem;
+}
+
+.right {
+    display: flex;
+    width: 400px;
+    gap: 20px;
+}
+
+.func {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.func a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    border-radius: 50%;
+    border: solid 4px #A48DF3;
+    background-color: #FEFAED;
+    color: #402F2F;
+}
+
+.func a i {
+    font-size: 20px;
+}
+
+#login {
+    display: flex;
+    gap: 20px;
+    height: 50px;
+    align-items: center;
+    padding: 0 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    border: solid 3px #332727;
+}
+
+#login i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    border-radius: 50%;
+    border: solid 4px #A48DF3;
+    color: #402F2F;
+    background-color: #FEFAED;
+    font-size: 20px;
+}
+
+.loginText span {
+    font-size: 0.8rem;
+}
+
+.loginText p {
+    color: #332727;
+}
