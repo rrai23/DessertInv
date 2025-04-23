@@ -102,12 +102,6 @@ header #p {
     color: #332727;
 }
 
-.container {
-    position: relative;
-    width: 100%; 
-    height: 100vh;
-}
-
 .container .login {
     align-self: center;
     width: 500px;
@@ -149,7 +143,7 @@ header #p {
     margin: 0 auto;
     display: flex;
     gap: 50px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .statement .mission,
