@@ -1,0 +1,229 @@
+
+.container #Sundae1 {
+    position: absolute;
+    top: 60px;  
+    left: -130px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-20deg);
+}
+
+.container #Pudding1 {
+    position: absolute;
+    top: 250px;  
+    left: -110px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Croissant1 {
+    position: absolute;
+    top: 180px;  
+    left: 70px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Cookie1 {
+    position: absolute;
+    top: -100px;  
+    left: 10px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Milkshake1 {
+    position: absolute;
+    top: 0;  
+    left: 200px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(30deg);
+}
+
+/*Part 2*/
+.container #Sundae2 {
+    position: absolute;
+    top: 260px;  
+    left: 210px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(25deg);
+}
+
+.container #Pudding2 {
+    position: absolute;
+    top: 390px;  
+    left: 290px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Croissant2 {
+    position: absolute;
+    top: 540px;  
+    left: 130px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(40deg);
+}
+
+.container #Cookie2 {
+    position: absolute;
+    top: 490px;  
+    left: -100px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-160deg);
+}
+
+.container #Milkshake2 {
+    position: absolute;
+    top: 400px;  
+    left: 80px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(-30deg);
+}
+
+/*Part 3*/
+.container #Sundae3 {
+    position: absolute;
+    top: 500px;  
+    left: 480px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-25deg);
+}
+
+.container #Pudding3 {
+    position: absolute;
+    top: 370px;  
+    left: 1090px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-10deg);
+}
+
+.container #Croissant3 {
+    position: absolute;
+    top: 520px;  
+    left: 690px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Cookie3 {
+    position: absolute;
+    top: 480px;  
+    left: 880px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-160deg);
+}
+
+.container #Milkshake3 {
+    position: absolute;
+    top: 320px;  
+    left: 990px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(40deg);
+}
+
+/*Part 4*/
+.container #Sundae4 {
+    position: absolute;
+    top: 540px;  
+    left: 1080px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(25deg);
+}
+
+.container #Pudding4 {
+    position: absolute;
+    top: -20px;  
+    left: 1330px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-10deg);
+}
+
+.container #Croissant4 {
+    position: absolute;
+    top: 480px;  
+    left: 1350px;  
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Cookie4 {
+    position: absolute;
+    top: 320px;  
+    left: 1250px;  
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-160deg);
+}
+
+.container #Milkshake4 {
+    position: absolute;
+    top: -90px;  
+    left: 1150px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(-60deg);
+}
+
+/*Part 5*/
+.container #Sundae5 {
+    position: absolute;
+    top: 140px;  
+    left: 1110px; 
+    width: 300px; 
+    height: 300px;
+    transform: rotate(-25deg);
+}
+
+.container #Pudding5 {
+    position: absolute;
+    top: 550px;  
+    left: 330px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Croissant5 {
+    position: absolute;
+    top: 20px;  
+    left: 1000px; 
+    width: 300px; 
+    height: 300px;
+}
+
+.container #Cookie5 {
+    position: absolute;
+    top: -90px;  
+    left: 930px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(-60deg);
+}
+
+.container #Milkshake5 {
+    position: absolute;
+    top: 190px;  
+    left: 1370px; 
+    width: 250px; 
+    height: 250px;
+    transform: rotate(-60deg);
+}
+
+.container #Pudding6 {
+    position: absolute;
+    top: -110px;  
+    left: 320px; 
+    width: 300px; 
+    height: 300px;
+}
