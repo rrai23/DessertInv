@@ -1,4 +1,6 @@
 @import url(design.css);
+@import url(Animations.css);
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -29,6 +31,9 @@ header .left {
 
 header .left img {
     height: 100%;
+    animation: slideRight 2.5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 header #p {
@@ -38,6 +43,9 @@ header #p {
     text-align: center;
     margin-left: 11.875rem;
     font-size: 3rem;
+    animation: slideUp 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 .right {
@@ -65,6 +73,9 @@ header #p {
     background-color: #FEFAED;
     color: #402F2F;
     transition: 0.8s;
+    animation: slideDown 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 .func a:hover {
@@ -88,6 +99,9 @@ header #p {
     border-radius: 1.875rem;
     border: solid 0.1875rem #332727;
     transition: 0.5s;
+    animation: slideDown 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 #login i {
@@ -105,11 +119,16 @@ header #p {
 }
 
 .loginText span {
+    font-size: 0.7rem;
+}
+
+.loginText b {
     font-size: 0.8rem;
 }
 
 .loginText p {
     color: #332727;
+    margin: 0 auto;
 }
 
 .container .login {
@@ -118,6 +137,16 @@ header #p {
     max-width: 31.25rem;
     height: auto;
     margin: 0 auto;
+    animation: slideUp 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
+.container img {
+    transform: rotate(var(--rotation));
+    animation: slideUpIMG 3.5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 .container .login img{
@@ -196,6 +225,16 @@ footer {
     text-align: center;
     min-height: 2.5rem;
     padding: 0.5rem;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.fade-in-section.visible {
+    animation: slideUp 1s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
 }
 
 body::-webkit-scrollbar {
