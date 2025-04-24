@@ -12,6 +12,7 @@
 <body>
     <img src="image/window.jpg">
     <div class="login">
+
         <div class="loginProper">
             <h1>LOGIN</h1>
             <h5 style="--i:2;">Welcome back! Please login to your account.</h5>
@@ -22,6 +23,7 @@
                 <input style="--i:5;"type="password" id="password" placeholder="password">
             </form>
             <button id="login" style="--i:4;">Login</button>
+            <div id="error-message"></div>
         </div>
     </div>
     <script src="loginPageScript.js"></script>

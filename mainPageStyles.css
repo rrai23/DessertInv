@@ -64,14 +64,14 @@ header #p {
     border: solid 0.25rem #A48DF3;
     background-color: #FEFAED;
     color: #402F2F;
-    transition: 0.3s;
+    transition: 0.8s;
 }
 
 .func a:hover {
     background-color: #FEFAED;
     color: #6745d5;
     box-shadow: 0 0 1.875rem #efcc58;
-    border: solid 0.25rem #e5b71f;
+    border: solid 0.30rem #e5b71f;
 }
 
 .func a i {

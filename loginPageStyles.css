@@ -106,8 +106,19 @@ img {
 }
 
 .login .loginProper button:hover {
-    background-color: #a48fee;
-    color: #fff2c7;
+    background-color: #FEFAED;
+    color: #6745d5;
+    box-shadow: 0 0 1.875rem #efcc58;
+    border: solid 0.15rem #e5b71f;
+}
+
+#error-message {
+    color: red; 
+    margin-top: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 @media (max-width: 900px) {

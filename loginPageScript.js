@@ -5,20 +5,24 @@ const trustedUsers = [
     {username: "admin_04@cremedelecreme.com", password:"jao2006"},
     {username: "admin_05@cremedelecreme.com", password:"leones2006"},
     {username: "admin_06@cremedelecreme.com", password:"api2006"}
-]
+];
 
-let buttonHTML = document.getElementById('login');
+const buttonHTML = document.getElementById('login');
+const errorMessage = document.getElementById('error-message');
 
-buttonHTML.onclick = () => {
+buttonHTML.onclick = (event) => {
     event.preventDefault();
-    let usernameInput = document.getElementById('username').value;
-    let passwordInput = document.getElementById('password').value;
-    let checkUser = trustedUsers.find(user => user.username === usernameInput);
 
-    if (checkUser && checkUser.password === passwordInput){
-        alert("Valid!");
+    const usernameInput = document.getElementById('username').value;
+    const passwordInput = document.getElementById('password').value;
+
+    const checkUser = trustedUsers.find(user => user.username === usernameInput);
+
+    if (checkUser && checkUser.password === passwordInput) {
+        window.location.href = "mainPage.php";
+    } else {
+        errorMessage.textContent = "Invalid username or password. Please try again.";
+        errorMessage.style.display = "block"; 
+        document.getElementById('password').value = '';
     }
-    else {
-        alert("Invalid");
-    }
-}
+};
