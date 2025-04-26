@@ -115,6 +115,7 @@ $conn->close();
                         <input type="submit" value="Edit Item" id="edit" class="w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-300 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                     </div>
                     <p class="text-center text-red-500 mt-1 mb-2">This action is <span class="font-semibold">PERMANENT</span></p>
+                    <?php if (isset($_GET['error'])): ?><script>alert("<?= htmlspecialchars($_GET['error']) ?>");</script><?php endif; ?>
                 </div>
             </form>
         </div>

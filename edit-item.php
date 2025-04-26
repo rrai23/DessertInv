@@ -62,8 +62,14 @@ if($conn->query($sql) === TRUE && move_uploaded_file($image['tmp_name'], $filePa
     header("Location: index.php?message=Item%20updated%20successfully!");
 } 
 else {
+    $error = urlencode("Error Updating Item!");
+    header("Location: edit-item-form.php?id=$id&error=$error");
+    exit;
+}
+/* I dont want to go to another webpage if failed Editing
+else {
     echo "Error updating item: " . $conn->error;
 }
-
+*/
 $conn->close();
 ?>

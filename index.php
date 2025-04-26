@@ -17,11 +17,11 @@ $conn->close();
 <body class="font-['Maven_Pro'] bg-yellow-100">
     <nav class="bg-purple-300 p-2 shadow-md flex items-center justify-between px-8 mt">
         <div id="nav-header">
-            <h1 class="text-3xl font-black text-yellow-900">Dessert Inventory</h1>
+            <h1 class="text-3xl font-black text-yellow-900" style="--i:0.5;">Dessert Inventory</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
-            <a><button id="button-view-inv">⌕ View Inventory</button></a>
-            <a><button id="button-add-item">+ Add Item</button></a>
+            <a><button id="button-view-inv" style="--i:0.5;">⌕ View Inventory</button></a>
+            <a><button id="button-add-item" style="--i:1.5;">+ Add Item</button></a>
         </div>
     </nav>
 

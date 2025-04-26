@@ -1,3 +1,11 @@
+@import url(Animations.css);
+
+#nav-header h1{
+    animation: slideRight 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+}
+
 #button-view-inv{
     height: 3rem;
     padding: 0 1.25rem;
@@ -7,7 +15,7 @@
     transition: 0.5s;
     animation: slideDown 1s ease forwards;
     animation-delay: calc(.2s * var(--i));
-    opacity: 1;
+    opacity: 0;
 }
 
 #button-add-item{
@@ -19,7 +27,16 @@
     transition: 0.5s;
     animation: slideDown 1s ease forwards;
     animation-delay: calc(.2s * var(--i));
-    opacity: 1;
+    opacity: 0;
+}
+
+#inventory-table-div,
+#add-item-form-div,
+#item-info-div,
+#edit-item-form-div {
+    animation: slideUp 2s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
 }
 
 #change:hover,
