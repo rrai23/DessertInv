@@ -17,7 +17,7 @@
             <img src="image/bears.jpg" alt="YES" style="--i:0;">
         </div>
 
-        <p id="p" style="--i:0;">CREME DELE CREME</p>
+        <p id="p" style="--i:0;">CREM DE LA CREM</p>
         
         <div class="right">
             <div class="func">
@@ -78,7 +78,7 @@
     <div class="statement">
         <div class="vision fade-in-section" style="--i:0;">
             <h1>/ Vision</h1>
-            <p>At Crème de la Crème, we envision a world where every sweet moment becomes a memory, and every dessert tells a story. 
+            <p>At <b>Crem De La Crem</b>, we envision a world where every sweet moment becomes a memory, and every dessert tells a story. 
                 Our dream is to be more than just a dessert store—we aim to be a sanctuary of indulgence and inspiration, 
                 where the elegance of French-inspired craftsmanship meets the warmth of community. 
                 We strive to lead with creativity, authenticity, and passion, becoming the
@@ -86,7 +86,7 @@
         </div>
         <div class="mission fade-in-section" style="--i:1;">
             <h1>/ Mission Statement</h1>
-            <p>Our mission at Crème de la Crème is to create artisanal desserts that are as beautiful as they are delicious, 
+            <p>Our mission at <b>Crem De La Crem </b> is to create artisanal desserts that are as beautiful as they are delicious, 
                 blending traditional techniques with bold, modern flavors. We are committed to sourcing the finest ingredients, 
                 honoring the art of patisserie, and delivering exceptional service that treats every guest like royalty. 
                 Whether it's a quiet afternoon treat or a centerpiece for life's special celebrations, we exist to elevate 
@@ -97,7 +97,7 @@
     </div>
     </div>
 
-    <footer class="fade-in-section" style="--i:0;">© 2025 Crème de la Crème — Crafted with love and a sprinkle of sugar. All rights reserved.</footer>
+    <footer class="fade-in-section" style="--i:0;">© 2025 Crem De La Crem — Crafted with love and a sprinkle of sugar. All rights reserved.</footer>
     <script src="mainPageScript.js"></script>
 </body>
 </html>

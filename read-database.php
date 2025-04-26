@@ -5,9 +5,9 @@ $sql = "SELECT * FROM $table";
 $result = $conn->query($sql);
 if ($result->num_rows > 0){
     echo "<h1 class='text-xl font-semibold text-center'>$tableName</h1>
-    <div class='border border-blue-500 rounded-lg overflow-hidden mt-1'>
+    <div class='border border-purple-300 rounded-lg overflow-hidden mt-1'>
     <table class='border-collapse w-full text-left'>
-        <thead class='bg-blue-500 text-white'>
+        <thead class='bg-purple-300 text-yellow-900'>
             <tr>
                 <th class='font-semibold py-1.5 px-1 pl-3 w-10'>ID</th>
                 <th class='font-semibold py-1.5 px-1 w-40'>Name</th>
@@ -50,11 +50,11 @@ if ($result->num_rows > 0){
                 if (strlen($row["description"]) >65) {
                     echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
-                        <a href='#' class='expand-link text-blue-500'>[...]</a>
+                        <a href='#' class='expand-link text-purple-500'>show⧨</a>
                     </span>
                     <span class='full-description hidden'>
                         " . htmlspecialchars($row["description"]) . " 
-                        <a href='#' class='collapse-link text-blue-500'>[Hide]</a>
+                        <a href='#' class='collapse-link text-purple-500'>hide◭</a>
                     </span>"; 
                 } else {
                     echo $row["description"];

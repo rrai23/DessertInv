@@ -2,6 +2,7 @@
 require 'db.php';
 $id = $_GET['id'];
 $image = $_FILES['item-image-input'];
+$currentFileExtension = 'jpg';
 
 if (isset($image) && $image['error'] == UPLOAD_ERR_OK) {
     $sql = "SELECT image_path FROM $table WHERE id = $id";
@@ -9,7 +10,7 @@ if (isset($image) && $image['error'] == UPLOAD_ERR_OK) {
     if($result && $result->num_rows > 0){
         $result = $result->fetch_assoc();
         $imagePath = $result['image_path'];
-        $currentFileExtension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
+        $currentFileExtension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
         $filePath = __DIR__ . $imagePath;
         if (file_exists($filePath)){
             unlink($filePath);

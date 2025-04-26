@@ -1,0 +1,95 @@
+#button-view-inv{
+    height: 3rem;
+    padding: 0 1.25rem;
+    text-decoration: none;
+    border-radius: 1.875rem;
+    border: solid 0.1875rem #332727;
+    transition: 0.5s;
+    animation: slideDown 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 1;
+}
+#button-view-inv:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.875rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+#button-add-item{
+    height: 3rem;
+    padding: 0 1.25rem;
+    text-decoration: none;
+    border-radius: 1.875rem;
+    border: solid 0.1875rem #332727;
+    transition: 0.5s;
+    animation: slideDown 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 1;
+}
+#button-add-item:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.875rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+#submitAdd {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#submitAdd:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+#upload {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#upload:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+#edit {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#edit:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+#button-cancel-delete {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#button-cancel-delete:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+#upload {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#upload:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+#change {
+    border: solid 0.01rem;
+    transition: 0.5s;
+}
+#change:hover {
+    background-color: #FEFAED;
+    box-shadow: 0 0 1.575rem #efcc58;
+    border: solid 0.25rem #e5b71f;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
