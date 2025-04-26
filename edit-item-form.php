@@ -36,7 +36,7 @@ $conn->close();
 <body class="font-['Maven_Pro'] bg-yellow-100">
     <nav class="bg-purple-300 p-2 shadow-md flex items-center justify-between px-8 mt">
         <div id="nav-header">
-            <h1 class="text-3xl font-bold text-yellow-900">Dessert Inventory</h1>
+            <h1 class="text-3xl font-bold text-yellow-900">Dessert Inventory | Edit Item</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
             <a href='index.php#inventory-table-div'><button id="button-view-inv">View inventory</button></a>

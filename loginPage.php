@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In to Creme Dele Creme Inventory System</title>
+    <title>Login Page | Crem De La Crem</title>
     <link rel="stylesheet" href="dist/loginPageStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
