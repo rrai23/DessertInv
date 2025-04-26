@@ -9,11 +9,7 @@
     animation-delay: calc(.2s * var(--i));
     opacity: 1;
 }
-#button-view-inv:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.875rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
+
 #button-add-item{
     height: 3rem;
     padding: 0 1.25rem;
@@ -25,69 +21,39 @@
     animation-delay: calc(.2s * var(--i));
     opacity: 1;
 }
-#button-add-item:hover {
+
+#change:hover,
+#upload:hover,
+#button-cancel-delete:hover,
+#edit:hover,
+#upload:hover,
+#submitAdd:hover,
+#button-add-item:hover,
+#button-view-inv:hover {
     background-color: #FEFAED;
     box-shadow: 0 0 1.875rem #efcc58;
     border: solid 0.25rem #e5b71f;
 }
-#submitAdd {
-    border: solid 0.01rem;
-    transition: 0.5s;
-}
-#submitAdd:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
 
-#upload {
-    border: solid 0.01rem;
-    transition: 0.5s;
-}
-#upload:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
-
-#edit {
-    border: solid 0.01rem;
-    transition: 0.5s;
-}
-#edit:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
-
-#button-cancel-delete {
-    border: solid 0.01rem;
-    transition: 0.5s;
-}
-#button-cancel-delete:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
-
-#upload {
-    border: solid 0.01rem;
-    transition: 0.5s;
-}
-#upload:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
-}
-
+#submitAdd,
+#upload,
+#edit,
+#button-cancel-delete,
+#upload,
 #change {
     border: solid 0.01rem;
     transition: 0.5s;
 }
-#change:hover {
-    background-color: #FEFAED;
-    box-shadow: 0 0 1.575rem #efcc58;
-    border: solid 0.25rem #e5b71f;
+
+.love {
+    border: 0.05rem solid #332727 !important;
+    transition: 0.5s
+}
+
+.love:hover {
+    background-color: #FEFAED !important;
+    box-shadow: 0 0 1.275rem #efcc58 !important;
+    border: 0.25rem solid #e5b71f !important;
 }
 
 body::-webkit-scrollbar {
