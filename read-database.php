@@ -50,7 +50,7 @@ if ($result->num_rows > 0){
                 if (strlen($row["description"]) >65) {
                     echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
-                        <a href='#' class='expand-link text-purple-500'>show⧨</a>
+                        <a href='#' class='expand-link text-purple-500'>show more⧨</a>
                     </span>
                     <span class='full-description hidden'>
                         " . htmlspecialchars($row["description"]) . " 

@@ -3,6 +3,8 @@ const manageButton = document.getElementById('man');
 
 let profName = sessionStorage.getItem('name');
 let profRole = sessionStorage.getItem('role');
+const urlParams = new URLSearchParams(window.location.search);
+const userLevel = urlParams.get('userLevel');
 
 if (profName && profRole){
     profile.innerHTML = `<b>${profName}</b><br><span>${profRole}</span>`;
@@ -10,7 +12,13 @@ if (profName && profRole){
 
 manageButton.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = "index.php";
+    if (userLevel === "1"){
+        console.log("Authorized: redirecting to index.php");
+        window.location.href = "index.php";
+    }
+    else {
+        alert("You are unauthorized to control the database");
+    }
 })
 
 const observer = new IntersectionObserver((entries, observer) => {
