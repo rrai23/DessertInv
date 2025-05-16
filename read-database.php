@@ -1,7 +1,11 @@
 <?php
 require 'db.php';
 
-$sql = "SELECT * FROM $table";
+$limit = 10;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+$sql = "SELECT * FROM $table LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
 if ($result->num_rows > 0){
     echo "<h1 class='text-xl font-semibold text-center'>$tableName</h1>

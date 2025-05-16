@@ -1,6 +1,8 @@
 <?php
 require 'db.php';
 $tableName = strtoupper(str_replace("_", " ", $table));
+$totalResults = $conn->query("SELECT COUNT(*) AS total FROM $table")->fetch_assoc()['total'];
+$totalPages = ceil($totalResults / 10);
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -70,6 +72,15 @@ $conn->close();
                 </div>
             </div>
         </form>
+    </div>
+        <!-- Pagination -->
+    <div id="pagination" class="pagination text-center mt-4 animate-fade-in">
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="?page=<?= $i ?>" 
+            class="px-3 py-1 rounded-xl transition-colors <?= ($page == $i) ? 'bg-purple-300 text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
     </div>
 </body>
 <script>
