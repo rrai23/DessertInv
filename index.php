@@ -29,6 +29,15 @@ $conn->close();
 
     <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
         <?php include 'read-database.php'; ?>
+        <!-- Pagination -->
+        <div  class="pagination text-center mt-2 animate-fade-in">
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?= $i ?>" 
+                class="px-3 py-1 rounded-lg overflow-hidden m-0.5  transition-colors <?= ($page == $i) ? 'bg-purple-300 text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                    <?= $i ?>
+                </a>
+            <?php endfor; ?>
+        </div>
     </div>
 
     <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-yellow-50 m-auto my-6">
@@ -73,15 +82,7 @@ $conn->close();
             </div>
         </form>
     </div>
-        <!-- Pagination -->
-    <div id="pagination" class="pagination text-center mt-4 animate-fade-in">
-        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <a href="?page=<?= $i ?>" 
-            class="px-3 py-1 rounded-xl transition-colors <?= ($page == $i) ? 'bg-purple-300 text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
-                <?= $i ?>
-            </a>
-        <?php endfor; ?>
-    </div>
+     
 </body>
 <script>
     const buttonViewInv = document.getElementById("button-view-inv");
