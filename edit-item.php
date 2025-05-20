@@ -58,7 +58,7 @@ $sql = "UPDATE $table
 
 //if(!move_uploaded_file($image['tmp-name'], $filePath)) echo "Failed to upload  file";
 
-if($conn->query($sql) === TRUE && move_uploaded_file($image['tmp_name'], $filePath)){
+if($conn->query($sql) === TRUE){
     header("Location: index.php?message=Item%20updated%20successfully!");
 } 
 else {
