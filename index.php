@@ -23,8 +23,8 @@ $conn->close();
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
             <a><button id="button-view-inv" style="--i:0.5;">⌕ View Inventory</button></a>
-            <a><button id="button-view-history" style="--i:0.5;">Restock History</button></a>
-            <a><button id="button-add-item" style="--i:1.5;">+ Add Item</button></a>
+            <a><button id="button-view-inv" style="--i:1.5;">Restock History</button></a>
+            <a><button id="button-add-item" style="--i:2.5;">+ Add Item</button></a>
         </div>
     </nav>
 

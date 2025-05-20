@@ -5,6 +5,10 @@
     opacity: 0;
 }
 
+#nav-buttons {
+    justify-content: space-evenly;
+}
+
 #button-view-inv {
     height: 3rem;
     padding: 0 1.25rem;
