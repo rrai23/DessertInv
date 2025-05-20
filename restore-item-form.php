@@ -4,7 +4,7 @@ require 'db.php';
 $id = $_GET['id'];
 $sql = "SELECT * FROM $table WHERE id = $id";
 $result = $conn->query($sql);
-if($result && $result->num_rows > 0) {
+if($result && $result->num_rows > 0){
     $item = $result->fetch_assoc();
 
     $id = $item['id'];
@@ -14,7 +14,7 @@ if($result && $result->num_rows > 0) {
     $imagePath = ltrim($item['image_path'], '/');
     $filePath = __DIR__ . $imagePath;
     $lastRestocked = $item['last_restocked'];
-    $isAvailable = ($item['quantity'] > 0) ? 1: 0;
+    $isAvailable = ($item['quantity'] > 0) ? 1 : 0;
     $sellPrice = number_format(floatval($item['sell_price']), 2);
     $costPrice = number_format(floatval($item['cost_price']), 2);
     $quantity = $item['quantity'];
@@ -28,7 +28,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deactivate Item | <?php echo $tableName; ?></title>
+    <title>Restore Item | <?php echo $tableName; ?></title>
     <link rel="stylesheet" href="dist/styles.css">
     <link rel="stylesheet" href="dist/hoverStyle.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,7 @@ $conn->close();
 <body class="font-['Maven_Pro'] bg-yellow-100">
     <nav class="bg-purple-300 p-2 shadow-md flex items-center justify-between px-8 mt">
         <div id="nav-header">
-            <h1 class="text-3xl font-bold text-yellow-900">Dessert Inventory | Deactivate Item</h1>
+            <h1 class="text-3xl font-bold text-yellow-900">Dessert Inventory | Restore Item</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
             <a href='index.php#inventory-table-div'><button id="button-view-inv">⌕ View inventory</button></a>
@@ -82,7 +82,7 @@ $conn->close();
         </div>
         <div id="item-buttons" class="max-w-full justify-between mt-1 mb-4 px-6">
             <a href="index.php"><button id="button-cancel-delete" class="w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-500 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Cancel</button></a>
-            <a href="delete-item.php?id=<?php echo $_GET['id']; ?>"><button class="love w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-300 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Deactivate Item</button></a>
+            <a href="restore-item.php?id=<?php echo $_GET['id']; ?>"><button class="love w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-300 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Restore Item</button></a>
         </div>
     </div>
 </body>
