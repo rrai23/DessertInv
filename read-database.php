@@ -34,7 +34,7 @@ if ($result->num_rows > 0){
         $category = str_replace("_", " ", $row["category"]);
 
         //long and short description
-        $shortDesc = strlen($row["description"]) > 65 ? substr($row["description"], 0, 65) : $row["description"];
+        $shortDesc = strlen($row["description"]) > 58 ? substr($row["description"], 0, 58) : $row["description"];
         $row["description"] = !empty($row["description"]) ? $row["description"] : "No description available.";
         
         //pricing
@@ -51,7 +51,7 @@ if ($result->num_rows > 0){
             <td class='text-justify py-1.5 pr-4'>
                 <div class='description-container'>";
 
-                if (strlen($row["description"]) >65) {
+                if (strlen($row["description"]) >58) {
                     echo "<span class='short-description'>
                         " . htmlspecialchars($shortDesc) . "
                         <a href='#' class='expand-link text-purple-500'>show more⧨</a>
