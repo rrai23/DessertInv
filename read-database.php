@@ -45,6 +45,7 @@ if ($result->num_rows > 0){
         echo ($rowCnt%2==0) ? "<tr class='bg-gray-100'>" : "<tr class='bg-white'>" ;
         $rowCnt++;
 
+        //outputting row data
         echo "<td class='text-center'>" . $row["id"] . "</td>
             <td class='pl-1'>" . $row["name"] . "</td>
             <td>" . $category . "</td>
