@@ -1,7 +1,7 @@
 <?php
 require 'db.php';
 
-$limit = 10;
+$limit = 15;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
