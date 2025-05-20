@@ -23,7 +23,7 @@ buttonHTML.onclick = (event) => {
         sessionStorage.setItem('name', checkUser.name);
         sessionStorage.setItem('role', checkUser.role);
         
-        window.location.href = `mainPage.php?userLevel=${checkUser.userLevel}`;
+        window.location.href = `mainPage.php?name=${checkUser.name}&userLevel=${checkUser.userLevel}`;
     } else {
         errorMessage.textContent = "Invalid username or password. Please try again.";
         errorMessage.style.display = "block"; 

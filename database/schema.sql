@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS restock_history(
     item_id INT NOT NULL,
     datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     old_quantity INT NOT NULL,
-    quantity_added INT NOT NULL CHECK (quantity_added>0),
+    quantity_added INT NOT NULL,
     new_quantity INT NOT NULL CHECK (new_quantity = old_quantity + quantity_added),
     updated_by VARCHAR(64) NOT NULL,
     FOREIGN KEY (item_id) REFERENCES crem_de_la_crem(id)

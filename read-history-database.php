@@ -42,13 +42,13 @@ if($result->num_rows > 0){
                 <th class='font-semibold py-1.5 px-1 pl-4 w-12'>ID</th>
                 <th class='font-semibold text-center py-1.5 px-1 pl-4 w-28'>Date</th>
                 <th class='font-semibold text-center py-1.5 px-1 pl-8 w-28'>Time</th>
-                <th class='font-semibold py-1.5 pl-9 pr-1 w-44'>Item</th>
+                <th class='font-semibold py-1.5 pl-9 pr-1 w-72'>Item</th>
                 <th class='font-semibold py-1.5 pr-1 w-200'>Category</th>
-                <th class='font-semibold py-1.5 px-1 w-20'>Old Qty</th>
-                <th class='font-semibold py-1.5 px-1 w-20'>+Qty</th>
-                <th class='font-semibold py-1.5 px-1 w-20'>New Qty</th>
+                <th class='font-semibold text-right py-1.5 pl-1 w-20'>Old Qty</th>
+                <th class='font-semibold text-right py-1.5 pl-4 w-20'>+Qty</th>
+                <th class='font-semibold text-right py-1.5 pl-1 w-20'>New Qty</th>
                 <th class='font-semibold text-center py-1.5 px-1 w-52'>Updated By</th>
-                <th class='w-10'>View</th>
+                <th class='font-semibold py-1.5 pr-6 w-10'>View</th>
             </tr>
         </thead>
         <tbody>";
@@ -70,11 +70,11 @@ if($result->num_rows > 0){
         echo "<td class='text-center pl-8'>" . $time . "</td>";
         echo "<td class='pl-9'>" . $row['item_name'] . "</td>";
         echo "<td class=''>" . $row['category'] . "</td>";
-        echo "<td class='text-right'>" . $row['old_quantity'] . "</td>";
-        echo "<td class='text-right'>" . $row['quantity_added'] . "</td>";
-        echo "<td class='text-right'>" . $row['new_quantity'] . "</td>";
+        echo "<td class='text-right pr-2'>" . $row['old_quantity'] . "</td>";
+        echo "<td class='text-right pr-2'>" . $row['quantity_added'] . "</td>";
+        echo "<td class='text-right pr-2'>" . $row['new_quantity'] . "</td>";
         echo "<td class='text-center'>" . $row['updated_by'] . "</td>";
-        echo "<td class=''>
+        echo "<td class='pl-3'>
                 <a href='edit-item-form.php?id=" . $row['item_id'] . "'>
                     <img src='src/view.png' alt='view' width='18px'>
                 </a>
