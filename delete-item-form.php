@@ -47,7 +47,7 @@ $conn->close();
 
     <div id="item-info-div" class="max-w-lg rounded-xl bg-yellow-50 shadow-lg overflow-hidden mx-auto mt-6 mb-6">
         <img src="<?php echo $imagePath ?>" alt="selected item image" class="w-full max-h-50 object-cover">
-        <div class="item-info pb-4 px-6">
+        <div class="item-info px-6">
             <h1 class="text-xl font-semibold text-center mt-2 text-yellow-900"><?php echo $name; ?></h1>
             <h2 class="text-sm text-center text-purple-700 mb-1"><?php echo str_replace("_", " ", $category); ?></h2>
             <p class="text-md text-justify mb-4"><?php echo $description; ?></p>
@@ -80,11 +80,10 @@ $conn->close();
                 </div>
             </div> 
         </div>
-        <div id="item-buttons" class="max-w-full justify-between mt-4 mb-1 px-6">
+        <div id="item-buttons" class="max-w-full justify-between mt-1 mb-4 px-6">
             <a href="index.php"><button id="button-cancel-delete" class="w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-500 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Cancel</button></a>
-            <a href="delete-item.php?id=<?php echo $_GET['id']; ?>"><button class="love w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-300 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Delete Item</button></a>
+            <a href="delete-item.php?id=<?php echo $_GET['id']; ?>"><button class="love w-57 cursor-pointer font-medium mt-2 px-6 py-2 bg-yellow-300 text-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Deactivate Item</button></a>
         </div>
-        <p class="text-center text-red-500 mb-2">This action is <span class="font-semibold">PERMANENT</span></p>
     </div>
 </body>
 <script></script>

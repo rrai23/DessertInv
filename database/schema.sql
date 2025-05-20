@@ -14,5 +14,6 @@ CREATE TABLE IF NOT EXISTS `crem_de_la_crem` (
     is_available TINYINT(1) NOT NULL DEFAULT 1,
     sell_price FLOAT NOT NULL,
     cost_price FLOAT NOT NULL,
-    quantity INT NOT NULL
+    quantity INT NOT NULL,
+    active TINYINT(1) NOT NULL DEFAULT 1
 );
