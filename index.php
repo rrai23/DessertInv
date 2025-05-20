@@ -41,7 +41,7 @@ $conn->close();
         </div>
     </div>
 
-    <div id="history-table-div" class=" max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
+    <div id="history-table-div" class="hidden max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
         <?php include 'read-history-database.php'; ?>
     </div>
 
