@@ -24,6 +24,9 @@
             </form>
             <button id="login" style="--i:4;">Login</button>
             <div id="error-message"></div>
+            <p style="text-align:center; margin-top:10px;" class="forgot">
+                <a style="text-decoration:none; --i:6;" href="forgotPasswordPage.html" id="forgot1" class="help">Forgot your password?</a>
+            </p>
         </div>
     </div>
     <script src="loginPageScript.js"></script>
