@@ -23,6 +23,7 @@ $conn->close();
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
             <a><button id="button-view-inv" style="--i:0.5;">⌕ View Inventory</button></a>
+            <a><button id="button-view-history" style="--i:0.5;">Restock History</button></a>
             <a><button id="button-add-item" style="--i:1.5;">+ Add Item</button></a>
         </div>
     </nav>
@@ -38,6 +39,10 @@ $conn->close();
                 </a>
             <?php endfor; ?>
         </div>
+    </div>
+
+    <div id="history-table-div" class="hidden max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
+        <?php include 'read-history-database.php'; ?>
     </div>
 
     <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-yellow-50 m-auto my-6">
@@ -82,26 +87,32 @@ $conn->close();
             </div>
         </form>
     </div>
-     
 </body>
 <script>
     const buttonViewInv = document.getElementById("button-view-inv");
     const buttonAddItem = document.getElementById("button-add-item");
+    const buttonViewHistory = document.getElementById("button-view-history");
     const inventoryTableDiv = document.getElementById("inventory-table-div");
     const addItemFormDiv = document.getElementById("add-item-form-div");
+    const historyTableDiv = document.getElementById("history-table-div");
     const addItemForm = document.getElementById("add-item-form");
 
     //Nav-button functionality
-    function showElement(toShow, toHide){
+    function showElement(toShow, toHide1, toHide2){
         toShow.classList.remove("hidden");
-        toHide.classList.add("hidden");
+        toHide1.classList.add("hidden");
+        toHide2.classList.add("hidden");
     }
     buttonViewInv.addEventListener('click', () => {
-        showElement(inventoryTableDiv, addItemFormDiv);
+        showElement(inventoryTableDiv, addItemFormDiv, historyTableDiv);
         document.title = "Inventory | <?php echo $tableName; ?>";
     })
+    buttonViewHistory.addEventListener('click', () => {
+        showElement(historyTableDiv, addItemFormDiv, inventoryTableDiv);
+        document.title = "Restock History | <?php echo $tableName ?>";
+    })
     buttonAddItem.addEventListener('click', () => {
-        showElement(addItemFormDiv, inventoryTableDiv);
+        showElement(addItemFormDiv, inventoryTableDiv, historyTableDiv);
         document.title = "Add Item | <?php echo $tableName; ?>";
     })
 
