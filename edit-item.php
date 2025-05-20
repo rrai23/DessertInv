@@ -4,6 +4,7 @@ $id = $_GET['id'];
 $image = $_FILES['item-image-input'];
 $currentFileExtension = 'jpg';
 
+//image processing
 if (isset($image) && $image['error'] == UPLOAD_ERR_OK) {
     $sql = "SELECT image_path FROM $table WHERE id = $id";
     $result = $conn->query($sql);
@@ -33,6 +34,13 @@ if (isset($image) && $image['error'] == UPLOAD_ERR_OK) {
     }
 }
 
+//getting original quantity
+$sql = "SELECT quantity FROM $table WHERE id = $id";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$oldQty = $row['quantity'];
+
+//form data processing
 $name = $_POST['item-name'];
 $category = $_POST['item-category'];
 $description = $_POST['item-description'];
@@ -44,6 +52,7 @@ $sellPrice = floatval($_POST['item-sell-price']);
 $costPrice = floatval($_POST['item-cost-price']);
 $quantity = intval($_POST['item-quantity']);
 
+//database update
 $sql = "UPDATE $table
     SET name = '$name', 
         category = '$category',

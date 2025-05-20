@@ -48,7 +48,7 @@ $conn->close();
         <div id="item-info" class="bg-yellow-50 max-w-lg rounded-lg shadow-lg overflow-hidden mx-auto my-6">
             <form id="edit-item-form" action="edit-item.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                 <img id="image-preview" src="<?php echo ($imagePath) ? $imagePath: "./images/placeholder.jpg"; ?>" alt="Uploaded image preview" class="w-full max-h-50 object-cover">
-                <div class="p-6 pt-0 mt-2.5">
+                <div class="px-6 pt-0 mt-2.5">
                     <div class="flex justify-center">
                         <label for="item-image-input" id="change" class="flex justify-center w-50 px-4 py-2 bg-yellow-100 max-h-50 object-cover border border-yellow-900 rounded-xl">Change Image</label>
                         <input type="file" name="item-image-input" id="item-image-input" style="display: none;" accept="image/*"><br>
@@ -82,7 +82,7 @@ $conn->close();
                     <div id="item-bottom" class="flex space-x-4">
                         <div class="w-1/3">
                             <label for="item-last-restocked" class="font-medium">Last Restocked: </label>
-                            <input type="date" id="item-last-restocked" name="item-last-restocked" value="<?php echo $lastRestocked ?>" class="w-full my-1 px-3 py-2 border border-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-200">
+                            <input type="date" readonly id="item-last-restocked" name="item-last-restocked" value="<?php echo $lastRestocked ?>" class="w-full my-1 px-3 py-2 border border-yellow-900 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-200">
                         </div>
                         <div class="w-1/3">
                             <label for="item-quantity" class="font-medium">Quantity: </label>
