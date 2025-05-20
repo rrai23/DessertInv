@@ -5,23 +5,9 @@
     opacity: 0;
 }
 
-#nav-buttons {
-    justify-content: space-evenly;
-}
-
+#button-add-item,
+#button-view-history,
 #button-view-inv {
-    height: 3rem;
-    padding: 0 1.25rem;
-    text-decoration: none;
-    border-radius: 1.875rem;
-    border: solid 0.1875rem #332727;
-    transition: 0.5s;
-    animation: slideDown 1s ease forwards;
-    animation-delay: calc(.2s * var(--i));
-    opacity: 0;
-}
-
-#button-add-item {
     height: 3rem;
     padding: 0 1.25rem;
     text-decoration: none;
@@ -43,6 +29,7 @@
     opacity: 0;
 }
 
+#button-view-history:hover,
 #change:hover,
 #upload:hover,
 #button-cancel-delete:hover,
