@@ -1,13 +1,37 @@
 <?php
 require 'db.php';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'id';
 
 $limit = 15;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM $table WHERE active = 1 LIMIT $limit OFFSET $offset";
+switch ($sort) {
+    case 'in_stock_true':
+        $orderBy = "is_available DESC, id ASC";
+        break;
+    case 'in_stock_false':
+        $orderBy = "is_available ASC, id ASC";
+        break;
+    case 'id':
+    default:
+        $orderBy = "id ASC";
+        break;
+}
+
+$sql = "SELECT * FROM $table WHERE active = 1 ORDER BY $orderBy LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
+
 if ($result->num_rows > 0){
+    echo "
+<form method='get' class='mb-2'>
+    <label for='sort' class='mr-2'>Sort by:</label>
+    <select name='sort' id='sort' onchange='this.form.submit()' class='border rounded px-2 py-1'>
+        <option value='id'" . ($sort == 'id' ? " selected" : "") . ">ID</option>
+        <option value='in_stock_true'" . ($sort == 'in_stock_true' ? " selected" : "") . ">In Stock (True)</option>
+        <option value='in_stock_false'" . ($sort == 'in_stock_false' ? " selected" : "") . ">In Stock (False)</option>
+    </select>
+</form>";
     echo "<h1 class='text-xl font-semibold text-center'>$tableName</h1>
     <div class='border border-purple-300 rounded-lg overflow-hidden mt-1'>
     <table class='border-collapse w-full text-left'>

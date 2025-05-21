@@ -24,18 +24,29 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
 </head>
 <body class="font-['Maven_Pro'] bg-yellow-100">
+    
     <nav class="bg-purple-300 p-2 shadow-md flex items-center justify-between px-8 mt">
         <div id="nav-header">
             <h1 class="text-3xl font-black text-yellow-900" style="--i:0.5;">Dessert Inventory</h1>
         </div>
         <div id="nav-buttons" class="flex space-x-4 mr-4">
-            <a><button id="button-view-inv" style="--i:0.5;">⌕ View Inventory</button></a>
+            <a><button id="button-view-inv" style="--i:0.5;"> View Inventory</button></a>
             <a><button id="button-view-history" style="--i:1.5;">Restock History</button></a>
             <a><button id="button-add-item" style="--i:2.5;">+ Add Item</button></a>
         </div>
     </nav>
 
     <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
+                        <!-- DONT MIND THIS EXPERMENT RAt
+                    <div class="flex justify-start items-center mb-2 ml-4">
+                    <label for="sort" class="mr-2 font-medium text-yellow-900">Sort by:</label>
+                    <select id="sort" name="sort" class="px-3 py-1 border border-yellow-900 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200">
+                        <option value="">-- Select --</option>
+                        <option value="id">ID</option>
+                        <option value="in_stock_true">In Stock (True)</option>
+                        <option value="in_stock_false">In Stock (False)</option>
+                    </select>
+                </div> -->
         <?php include 'read-database.php'; ?>
         <!-- Pagination -->
         <div  class="pagination text-center mt-2 animate-fade-in">
@@ -214,5 +225,13 @@ $conn->close();
             imagePreview.classList.add("hidden", "border", "border-gray-300", "rounded-xl");
         }
     })
+
+    document.getElementById('sort').addEventListener('change', function () {
+    const selected = this.value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('sort', selected);
+    window.location.href = url.toString();
+    });
+
 </script>
 </html>
