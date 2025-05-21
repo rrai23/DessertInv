@@ -14,8 +14,8 @@ if($conn->connect_error){
 }
 
 $limit = 20;
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1 ;
-$offset = ($page -1) * $limit;
+$history_page = isset($_GET['history_page']) ? (int)$_GET['history_page'] : 1 ;
+$offset = ($history_page -1) * $limit;
 
 $sql = "SELECT
         rt.restock_id,

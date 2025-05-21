@@ -1,8 +1,15 @@
 <?php
 require 'db.php';
 $tableName = strtoupper(str_replace("_", " ", $table));
+
+//Pagination for inventory table
 $totalResults = $conn->query("SELECT COUNT(*) AS total FROM $table")->fetch_assoc()['total'];
 $totalPages = ceil($totalResults / 10);
+
+//Pagination for history table
+$totalHistoryResults = $conn->query("SELECT COUNT(*) AS total FROM restock_history")->fetch_assoc()['total'];
+$totalHistoryPages = ceil($totalHistoryResults / 20);
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -43,6 +50,15 @@ $conn->close();
 
     <div id="history-table-div" class="hidden max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
         <?php include 'read-history-database.php'; ?>
+        <!-- Pagination -->
+         <div class="pagination text-center mt-2 animate-fade-in">
+            <?php for($i = 1; $i <= $totalHistoryPages; $i++): ?>
+                <a href='?history_page=<?= $i ?>&view=history'
+                class="px-3 py-1 rounded-lg overflow-hidden m-0.5 transition-colors <?= ($history_page ==$i) ? "bg-purple-300 text-white" : "bg-gray-200 hover:bg-gray-300" ?>">
+                    <?= $i ?>
+                </a>
+            <?php endfor; ?>
+         </div>
     </div>
 
     <div id="add-item-form-div" class="hidden max-w-lg rounded-xl overflow-hidden shadow-lg bg-yellow-50 m-auto my-6">
@@ -109,11 +125,21 @@ $conn->close();
     })
     buttonViewHistory.addEventListener('click', () => {
         showElement(historyTableDiv, addItemFormDiv, inventoryTableDiv);
-        document.title = "Restock History | <?php echo $tableName ?>";
+        document.title = "Restock History | RESTOCK HISTORY";
     })
     buttonAddItem.addEventListener('click', () => {
         showElement(addItemFormDiv, inventoryTableDiv, historyTableDiv);
         document.title = "Add Item | <?php echo $tableName; ?>";
+    })
+
+    //for pagination of restock history
+    document.addEventListener("DOMContentLoaded", () => {
+        const view = new URLSearchParams(window.location.search).get('view');
+
+        if(view === 'history'){
+            showElement(historyTableDiv, addItemFormDiv, inventoryTableDiv);
+            document.title = "Restock History | RESTOCK HISTORY";
+        }
     })
 
     //toggling description length in table
