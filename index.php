@@ -37,7 +37,7 @@ $conn->close();
     </nav>
 
     <div id="inventory-table-div" class="max-w-full% rounded-xl overflow-hidden m-auto shadow-lg bg-yellow-50 mx-6 my-6 p-2">
-                        <!-- DONT MIND THIS EXPERMENT RAt
+                        <!-- DONT MIND THIS EXPERMENT RA
                     <div class="flex justify-start items-center mb-2 ml-4">
                     <label for="sort" class="mr-2 font-medium text-yellow-900">Sort by:</label>
                     <select id="sort" name="sort" class="px-3 py-1 border border-yellow-900 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200">

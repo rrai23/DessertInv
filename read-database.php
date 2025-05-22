@@ -1,13 +1,15 @@
 <?php
 require 'db.php';
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id';
-$threshold = isset($_GET['threshold']) ? intval($_GET['threshold']) : 10; // Default threshold is 10
+$threshold = isset($_GET['threshold']) ? intval($_GET['threshold']) : 10; 
 
 $limit = 15;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-// Fix the ORDER BY clause construction to prevent SQL injection
+
+$whereClause = "1"; 
+
 switch ($sort) {
     case 'in_stock_true':
         $orderBy = "is_available DESC, id ASC";
@@ -22,14 +24,29 @@ switch ($sort) {
                     WHEN quantity <= $threshold THEN 2
                     ELSE 3 END, id ASC";
         break;
+
+        //************************************************************//
+        //Hopefully this what u mean joseph HAHAHA \/
+        //************************************************************//
+
+    case 'active':
+        $whereClause = "active = 1";
+        $orderBy = "id ASC";
+        break;
+    case 'deactive':
+        $whereClause = "active = 0";
+        $orderBy = "id ASC";
+        break;
     case 'id':
     default:
         $orderBy = "id ASC";
         break;
 }
 
-// Removed the WHERE active = 1 condition since the column doesn't exist
-$sql = "SELECT * FROM $table ORDER BY $orderBy LIMIT ? OFFSET ?";
+
+
+$sql = "SELECT * FROM $table WHERE $whereClause ORDER BY $orderBy LIMIT ? OFFSET ?";
+
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
@@ -42,12 +59,13 @@ if ($stmt) {
 <div class='flex justify-between items-center mb-2'>
     <form method='get' class='mr-2'>
         <label for='sort' class='mr-2'>Sort by:</label>
-        <select name='sort' id='sort' class='border rounded px-2 py-1'>
-            <option value='id'" . ($sort == 'id' ? " selected" : "") . ">ID</option>
-            <option value='in_stock_true'" . ($sort == 'in_stock_true' ? " selected" : "") . ">In Stock (True)</option>
-            <option value='in_stock_false'" . ($sort == 'in_stock_false' ? " selected" : "") . ">In Stock (False)</option>
-            <option value='low_stock'" . ($sort == 'low_stock' ? " selected" : "") . ">Low Stock First</option>
-        </select>
+         <select name='sort' id='sort' onchange='this.form.submit()' class='border rounded px-2 py-1'>
+        <option value='id'" . ($sort == 'id' ? " selected" : "") . ">ID</option>
+        <option value='in_stock_true'" . ($sort == 'in_stock_true' ? " selected" : "") . ">In Stock (True)</option>
+        <option value='in_stock_false'" . ($sort == 'in_stock_false' ? " selected" : "") . ">In Stock (False)</option>
+        <option value='active'" . ($sort == 'active' ? " selected" : "") . ">Active</option>
+        <option value='deactive'" . ($sort == 'deactive' ? " selected" : "") . ">Deactive</option>
+    </select>
         <label for='threshold' class='ml-4 mr-2'>Stock Threshold:</label>
         <input type='number' name='threshold' id='threshold' min='1' value='$threshold' class='border rounded px-2 py-1 w-16'>
         <button type='submit' class='bg-purple-500 text-white px-3 py-1 rounded ml-2'>Apply</button>
